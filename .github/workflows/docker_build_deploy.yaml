@@ -99,7 +99,7 @@ jobs:
     needs: check-renv
     if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
     outputs:
-      renv-cache-hashsum: ${{ steps.set-hash.outputs.renv-cache-hashsum }}
+      renv-cache-hashsum: ${{ steps.set-hash.outputs.renv-cache-hashsum || '' }}
     steps:
       - uses: actions/checkout@v4
 
