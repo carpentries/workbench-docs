@@ -91,6 +91,9 @@ jobs:
         run: |
           if [[ -d renv ]]; then
             echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "❗No renv requirement found. Skipping..."
+            echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
   prepare-renv:
