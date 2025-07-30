@@ -45,14 +45,31 @@ However, we still would recommend working through the [local setup instructions]
 ## Devcontainers {#101-devcontainer}
 
 Devcontainers are a way of remotely or locally setting up a coding environment based on a preconfigured "blueprint".
-This blueprint is used by Integrated Development Environments (IDEs) like VSCode, VSCodium, PyCharm, and EnvBuilder, to initiate and configure an environment for you.
+This blueprint is used by Integrated Development Environments (IDEs) like VSCode, vscodium, IDEA, Cursor or Zed, to initiate and configure an environment for you.
 This can make it much quicker to get up and running with lesson development.
 
-The only thing you need to use devcontainers is Docker, so please read the [Docker installation instructions](#101-docker) to install Docker Desktop or the Docker Engine for your operating system.
+To use devcontainers you need:
 
-Please note, if you are not comfortable with Docker or the Workbench, we recommend going through the installation steps below.
+- Docker: please read the [Docker installation instructions](#101-docker) to install Docker Desktop or the Docker Engine for your operating system.
+- An IDE that supports devcontainers: We recommend [VSCode](https://code.visualstudio.com/) (free but not completely open source).
+
+Please note, if you are not comfortable with using Docker or the Workbench, we recommend going through the installation steps below.
 
 Once you have Docker set up, please follow our full devcontainer instructions are in [TODO](../episodes/todo.md).
+
+::::::::::::::::::::: callout
+
+### What if I don't want to use VSCode?
+
+Sadly the devcontainer specification is only fully supported in a small number of IDEs.
+VSCode is recommended in our lessons and it natively supports devcontainers.
+Getting devcontainers to work in other fully open source IDEs like `vscodium` and `zed` are not as simple as to be easy for novices.
+
+Therefore we would recommend using VSCode as whilst it is partially open source, it is a reliable and very well supported piece of software.
+
+If this is not an option, then we would recommend either using the [Docker image directly](#101-docker) as it comes bundled with RStudio which you can use to work on your lesson.
+
+:::::::::::::::::::::::::::::
 
 ::::::::::::::::::::: callout
 
@@ -84,7 +101,26 @@ Once installed, choose one of the following ways to interact with the Docker sys
 1. Via the Docker Desktop GUI app
 2. Via the command line terminal (bash on Linux/Windows WSL/git bash, terminal on the Mac)
 
-After Docker Desktop/Docker Engine is set up, you can use the [Workbench docker image directly](https://github.com/froggleston/workbench-dev/blob/frog-docker-update-1/docker.qmd), or use the [devcontainer](#101-devcontainer) route above.
+### Running the Workbench Docker container
+
+After Docker Desktop/Docker Engine is set up, you can use the following command from the terminal (`git bash`, WSL, or MacOS Terminal app):
+
+```bash
+docker run --name carpentries-workbench \
+           -p 8787:8787 \
+           -v ~/.ssh:/home/rstudio/.ssh:ro \
+           -v ~/.gitconfig:/home/rstudio/.gitconfig \
+           -e DISABLE_AUTH=true \
+           -d carpentries/workbench-docker:latest
+```
+
+In the Docker Desktop app, you should see an entry appear in the "Containers" tab with the name `carpentries-workbench`.
+
+You can now open a web browser and navigate to `http://localhost:8787` which will connect to the RStudio server running in the Docker container.
+You're good to go!
+Please continue with the [Test Your Installation](#install-test) instructions.
+
+More information and docker runtime options are described in the [Workbench docker documentation](https://github.com/froggleston/workbench-dev/blob/frog-docker-update-1/docker.qmd).
 
 Please note, if you are not comfortable with Docker or the Workbench, we recommend going through the [manual installation steps](#101-manual) below.
 
@@ -564,8 +600,7 @@ For example, for the error above, use `sudo apt install libxslt1-dev`.
 
 ## Test your installation {#install-test}
 
-Now that you have installed the lesson components, it is a good idea to run a small test to verify that these components work together.
-To test your  installation **open RStudio** (or launch R if you have not installed RStudio) and enter the following commands to confirm everything works:
+To test your installation **open RStudio** either as the locally installed app or in the browser if using Docker (or launch R if you have not installed RStudio and are not using Docker/devcontainers) and enter the following commands to confirm everything works:
 
 ```r
 rmarkdown::pandoc_version()
