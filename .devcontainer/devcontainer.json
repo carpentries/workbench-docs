@@ -1,0 +1,22 @@
+{
+    "name": "${localWorkspaceFolderBasename}",
+    "remoteUser":"rstudio",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/rstudio/lesson,type=bind",
+    "workspaceFolder": "/home/rstudio/lesson",
+    "mounts": [
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/rstudio/.ssh,type=bind,consistency=cached",
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gnupg,target=/home/rstudio/.gnupg,type=bind,consistency=cached"
+    ],
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "postCreateCommand": {
+        "pre_echo": "echo 'Installing lesson prerequisites - please wait...'",
+        "tty": "export GPG_TTY=$(tty)",
+        "pre_prep": "bash -c /home/rstudio/.workbench/ci_lesson_pre_prep.sh"
+    },
+    "hostRequirements": {
+        "cpus": 2
+    }
+}
