@@ -2,11 +2,7 @@
 title: '101 Quick Start: Setting up your Workbench environment'
 ---
 
-### Local vs Online
-
-You can use the Workbench completely within GitHub using our templates, but we recommend working through the local setup instructions as they will be useful for lesson development and debugging.
-
-## Local Installation of the Workbench {#101-local}
+## Installation of the Workbench {#101-install}
 
 The Workbench lesson infrastructure is built on Git, the R language, and pandoc.
 It consists of four components:
@@ -19,7 +15,118 @@ It consists of four components:
 Details of how these tools work together are explained in the [TODO](../episodes/todo.md).
 In short, you can interact with the lesson source content and the Workbench tools to author and preview your lesson.
 
-### Required Software {#required}
+### What installation method should I choose?
+
+We provide four mechanisms to interact with the Workbench:
+
+- Devcontainers (online or local) **[recommended]**
+  - We recommend using devcontainers as everything will be installed for you whether you are using an online or local environment, with minimal setup.
+  - **If no devcontainer is available for the lesson you wish to work on, please use the manual installation route, or Docker if you are comfortable with it.**
+- Docker (local)
+  - The Docker option can be useful for those that already have experience with Docker and containers, and are happy to do some manual configuration or wish to have more flexibility.
+  - **Initial setup with docker is very straightfoward but can get complicated depending on your operating system!**
+- Manual local installation (local)
+  - Installing all the requirements manually on your local operating system is a longer process, but can be useful if you want to learn how to get an environment set up and will teach you more about the Workbench framework.
+  - **If docker and devcontainers are not suitable for you, installing things manually is completely acceptable!**
+- GitHub (online)
+  - Moving your development completely online by using GitHub's Codespaces or Dev environment is an excellent choice if you have fast internet and are comfortable with this process.
+  - **Be advised that this option may incur a cost depending on your GitHub account status!**
+
+::::::::::::::::::::: callout
+
+### Why would I want to install locally if all these other options exist?
+
+You can use the Workbench completely within devcontainers or Docker locally, or through GitHub using our templates.
+
+However, we still would recommend working through the [local setup instructions](#101-manual) at least once as they will be useful for lesson development and debugging in future.
+
+:::::::::::::::::::::::::::::
+
+## Devcontainers {#101-devcontainer}
+
+Devcontainers are a way of remotely or locally setting up a coding environment based on a preconfigured "blueprint".
+This blueprint is used by Integrated Development Environments (IDEs) like VSCode, vscodium, IDEA, Cursor or Zed, to initiate and configure an environment for you.
+This can make it much quicker to get up and running with lesson development.
+
+To use devcontainers you need:
+
+- Docker: please read the [Docker installation instructions](#101-docker) to install Docker Desktop or the Docker Engine for your operating system.
+- An IDE that supports devcontainers: We recommend [VSCode](https://code.visualstudio.com/) (free but not completely open source).
+
+Please note, if you are not comfortable with using Docker or the Workbench, we recommend going through the installation steps below.
+
+Once you have Docker set up, please follow our full devcontainer instructions are in [TODO](../episodes/todo.md).
+
+::::::::::::::::::::: callout
+
+### What if I don't want to use VSCode?
+
+Sadly the devcontainer specification is only fully supported in a small number of IDEs.
+VSCode is recommended in our lessons and it natively supports devcontainers.
+Getting devcontainers to work in other fully open source IDEs like `vscodium` and `zed` are not as simple as to be easy for novices.
+
+Therefore we would recommend using VSCode as whilst it is partially open source, it is a reliable and very well supported piece of software.
+
+If this is not an option, then we would recommend either using the [Docker image directly](#101-docker) as it comes bundled with RStudio which you can use to work on your lesson.
+
+:::::::::::::::::::::::::::::
+
+::::::::::::::::::::: callout
+
+### Are devcontainers available for all lessons?
+
+Devcontainer blueprints are already provided by our [workbench-template-rmd][rmd-template] and [workbench-template-md][md-template] lesson templates, so when creating a new lesson you will get access to devcontainers automatically.
+
+However, not all Workbench-compatible lessons will have devcontainers enabled (a `.devcontainer` folder within the repository).
+To add devcontainer support to a pre-existing lesson, please follow the [devcontainer import instructions TODO](../episodes/todo.md)
+
+We will also be rolling these out into existing lessons across our official lesson programs too!
+
+:::::::::::::::::::::::::::::
+
+## Docker {#101-docker}
+
+The documentation below for each operating system goes through how to manually install the Workbench dependencies, requirements, and packages.
+To make this lengthy process shorter, the Workbench development team also provides Docker images of each release of the Workbench that are used for our GitHub workflows that build our core curriculum lessons.
+You can use these Docker images to run the Workbench on your local system too!
+
+Docker Desktop is available for all operating systems (Windows, Mac and Linux), so we recommend installing this.
+
+### Docker Desktop
+
+Install Docker Desktop for [your operating system](https://docs.docker.com/desktop/).
+
+Once installed, choose one of the following ways to interact with the Docker system:
+
+1. Via the Docker Desktop GUI app
+2. Via the command line terminal (bash on Linux/Windows WSL/git bash, terminal on the Mac)
+
+### Running the Workbench Docker container
+
+After Docker Desktop/Docker Engine is set up, you can use the following command from the terminal (`git bash`, WSL, or MacOS Terminal app):
+
+```bash
+docker run --name carpentries-workbench \
+           -p 8787:8787 \
+           -v ~/.ssh:/home/rstudio/.ssh:ro \
+           -v ~/.gitconfig:/home/rstudio/.gitconfig \
+           -e DISABLE_AUTH=true \
+           -d carpentries/workbench-docker:latest
+```
+
+In the Docker Desktop app, you should see an entry appear in the "Containers" tab with the name `carpentries-workbench`.
+
+You can now open a web browser and navigate to `http://localhost:8787` which will connect to the RStudio server running in the Docker container.
+You're good to go!
+Please continue with the [Test Your Installation](#install-test) instructions.
+
+More information and docker runtime options are described in the [Workbench docker documentation](https://github.com/froggleston/workbench-dev/blob/frog-docker-update-1/docker.qmd).
+
+Please note, if you are not comfortable with Docker or the Workbench, we recommend going through the [manual installation steps](#101-manual) below.
+
+## Manual Local Installation {#101-manual}
+
+### Required Software {#101-required}
 
 This setup document will take you through the process of installing or upgrading the required software on your local computer or server.
 
@@ -38,7 +145,7 @@ This setup document will take you through the process of installing or upgrading
      repos = c("https://carpentries.r-universe.dev/", getOption("repos")))
    ```
 
-### Recommended Software {#recommend}
+### Recommended Software {#101-recommend}
 
 If you are using R or pandoc for the first time, we recommend using [the RStudio IDE][rstudio] for the following reasons:
 
@@ -60,22 +167,6 @@ If you already have software installed and are curious if you should update it t
 Newer versions will often contain important bug fixes that are important to the security of your computer.
 
 Jump to the installation instructions for your system: [Windows](#windows), [MacOS](#mac), or [Linux](#linux).
-
-::::::::::::::::::::: callout
-
-#### Optional: Setting up the Workbench environment using Docker
-
-The following documentation goes through how to manually install the Workbench dependencies, requirements, and packages.
-
-The Workbench development team also provides Docker images of each release of the Workbench that are used for our GitHub workflows that build our core curriculum lessons.
-However, you can use these Docker images to run the Workbench on your local system too!
-
-If you are interested in using these images to build your lessons, please read the [Workbench Docker setup instructions](https://github.com/froggleston/workbench-dev/blob/frog-docker-update-1/docker.qmd).
-
-Please note, if you are not comfortable with Docker or the Workbench, we recommend going through the installation steps below.
-
-:::::::::::::::::::::::::::::
-
 
 ## Installing on Windows {#windows}
 
@@ -509,8 +600,7 @@ For example, for the error above, use `sudo apt install libxslt1-dev`.
 
 ## Test your installation {#install-test}
 
-Now that you have installed the lesson components, it is a good idea to run a small test to verify that these components work together.
-To test your  installation **open RStudio** (or launch R if you have not installed RStudio) and enter the following commands to confirm everything works:
+To test your installation **open RStudio** either as the locally installed app or in the browser if using Docker (or launch R if you have not installed RStudio and are not using Docker/devcontainers) and enter the following commands to confirm everything works:
 
 ```r
 rmarkdown::pandoc_version()
@@ -591,6 +681,8 @@ The following resources are extremely helpful for setting up authentication cred
 [R]: https://cran.rstudio.org/
 [pandoc]: https://pandoc.org/
 [{tinkr}]: https://docs.ropensci.org/tinkr/
+[rmd-template]: https://github.com/carpentries/workbench-template-rmd
+[md-template]: https://github.com/carpentries/workbench-template-md
 [^workspace]: By default, R will ask if you want to save your workspace to a
   hidden file called `.RData`. This is loaded when you start R, restoring your
   environment with all of the packages and objects you had previously loaded.
