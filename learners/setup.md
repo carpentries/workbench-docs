@@ -21,6 +21,7 @@ We provide four mechanisms to interact with the Workbench:
 
 - Devcontainers (online or local) **[recommended]**
   - We recommend using devcontainers as everything will be installed for you whether you are using an online or local environment, with minimal setup.
+  - Lessons with devcontainer support will have a `.devcontainer` folder in the root of the repository.
   - **If no devcontainer is available for the lesson you wish to work on, please use the manual installation route, or Docker if you are comfortable with it.**
 - Docker (local)
   - The Docker option can be useful for those that already have experience with Docker and containers, and are happy to do some manual configuration or wish to have more flexibility.
@@ -45,17 +46,17 @@ However, we still would recommend working through the [local setup instructions]
 ## Devcontainers {#101-devcontainer}
 
 Devcontainers are a way of remotely or locally setting up a coding environment based on a preconfigured "blueprint".
-This blueprint is used by Integrated Development Environments (IDEs) like VSCode, vscodium, IDEA, Cursor or Zed, to initiate and configure an environment for you.
+This blueprint is used by Integrated Development Environments (IDEs) like VSCode, vscodium, IDEA, or Zed, to initiate and configure an environment for you.
 This can make it much quicker to get up and running with lesson development.
 
 To use devcontainers you need:
 
 - Docker: please read the [Docker installation instructions](#101-docker) to install Docker Desktop or the Docker Engine for your operating system.
-- An IDE that supports devcontainers: We recommend [VSCode](https://code.visualstudio.com/) (free but not completely open source).
+- An IDE that supports devcontainers: We recommend [VSCode](https://code.visualstudio.com/) as it has the most complete and easy to set up devcontainer support. We acknowledge that VSCode is free but not completely open source.
 
 Please note, if you are not comfortable with using Docker or the Workbench, we recommend going through the installation steps below.
 
-Once you have Docker set up, please follow our full devcontainer instructions are in [TODO](../episodes/todo.md).
+Once you have Docker set up, please follow our full instructions in the [devcontainer documentation](../devcontainer.md).
 
 ::::::::::::::::::::: callout
 
@@ -104,6 +105,24 @@ Once installed, choose one of the following ways to interact with the Docker sys
 ### Running the Workbench Docker container
 
 After Docker Desktop/Docker Engine is set up, you can use the following command from the terminal (`git bash`, WSL, or MacOS Terminal app):
+
+```bash
+# go home
+cd ~
+
+# make a `lessons` folder in your home directory and clone in a lesson
+mkdir ~/lessons
+cd ~/lessons
+git clone git@github.com:swcarpentry/shell-novice.git
+
+# create a workbench-lessons named volume, and copy in the shell-novice content
+curl -s https://raw.githubusercontent.com/carpentries/workbench-docker/main/scripts/setup_named_volume.sh | bash -s -- ~/lessons/shell-novice
+
+# start the workbench container
+curl -s https://raw.githubusercontent.com/carpentries/workbench-docker/main/scripts/run_workbench.sh | bash
+```
+
+Or more longhand if you want to control various docker options:
 
 ```bash
 docker run --name carpentries-workbench \
