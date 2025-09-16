@@ -56,13 +56,17 @@ contact: 'team@carpentries.org'
 
 # Order of episodes in your lesson
 episodes:
-- introduction.md
+- 01-first-lesson.md
 
 # Information for Learners
 learners:
+- setup.md
+- faq.md
+- docker.md
 
 # Information for Instructors
 instructors:
+- instructor-notes.md
 
 # Learner Profiles
 profiles:

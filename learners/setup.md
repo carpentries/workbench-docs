@@ -139,7 +139,7 @@ You can now open a web browser and navigate to `http://localhost:8787` which wil
 You're good to go!
 Please continue with the [Test Your Installation](#install-test) instructions.
 
-More information and docker runtime options are described in the [Workbench docker documentation](https://github.com/froggleston/workbench-dev/blob/frog-docker-update-1/docker.qmd).
+More information and docker runtime options are described in the [Docker guide](docker.md) and [Workbench developer docker documentation](https://github.com/froggleston/workbench-dev/blob/frog-docker-update-1/docker.qmd).
 
 Please note, if you are not comfortable with Docker or the Workbench, we recommend going through the [manual installation steps](#101-manual) below.
 
@@ -177,10 +177,6 @@ If you are using R or pandoc for the first time, we recommend using [the RStudio
 If you do not want to use RStudio, that's perfectly okay and expected!
 We want to you to be able work with the new template with the tools with which you're most familiar.
 If you feel comfortable using a different tool (e.g. the command line or VSCode), then you should install R and pandoc separately and make sure that they are in your PATH.
-
-### Installation
-
-This will guide you through installing the foundational software and infrastructure packages on your computer.
 
 If you already have software installed and are curious if you should update it to a newer version, the answer is almost always, yes.
 Newer versions will often contain important bug fixes that are important to the security of your computer.
@@ -465,7 +461,7 @@ If your Ubuntu version is not listed, check the [RStudio Previous Versions](http
 
 ::::::::::: callout
 
-##### Optional: verify the install
+### Optional: verify the install
 
 You can optionally verify the download before installing by following the instructions at <https://posit.co/code-signing/>.
 
@@ -545,7 +541,7 @@ install.packages(c("sandpaper", "varnish", "pegboard"))
 
 ::::::::::::: discussion
 
-#### Saving these settings for later
+### Saving these settings for later
 
 To not have to run this block of code every time you want to update, add the following code into your `~/.Rprofile` to run it every time you open your terminal:
 
@@ -553,7 +549,7 @@ To not have to run this block of code every time you want to update, add the fol
 
 :::::: solution
 
-#### Add this to `~/.Rprofile`
+### Add this to `~/.Rprofile`
 
 Open the `nano` text editor:
 
@@ -583,7 +579,7 @@ local({
 
 ::::::::::::: callout
 
-#### What if I get errors installing packages?
+### What if I get errors installing packages?
 
 If you run into errors (non-zero exit status), it probably means that you were missing a C library dependency that needs to be installed via your package manager (i.e. apt).
 To resolve these issues, scroll back in the log and you might find messages that looks similar to this:
@@ -617,7 +613,8 @@ For example, for the error above, use `sudo apt install libxslt1-dev`.
 
 :::::::::::::::::::::
 
-## Test your installation {#install-test}
+
+## Test your Workbench installation {#install-test}
 
 To test your installation **open RStudio** either as the locally installed app or in the browser if using Docker (or launch R if you have not installed RStudio and are not using Docker/devcontainers) and enter the following commands to confirm everything works:
 
