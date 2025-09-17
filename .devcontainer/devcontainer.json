@@ -1,7 +1,14 @@
 {
+    "forwardPorts": [8787],
+    "portsAttributes": {
+        "8787": {
+            "label": "RStudio Server",
+            "onAutoForward": "notify"
+        }
+    },
     "remoteUser":"rstudio",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/home/rstudio/lesson,type=bind",
-    "workspaceFolder": "/home/rstudio/lesson",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/rstudio/lessons/${localWorkspaceFolderBasename},type=bind",
+    "workspaceFolder": "/home/rstudio/lessons/${localWorkspaceFolderBasename}",
     "mounts": [
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/rstudio/.ssh,type=bind,consistency=cached",
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gnupg,target=/home/rstudio/.gnupg,type=bind,consistency=cached"
@@ -14,5 +21,8 @@
         "pre_echo": "echo 'Installing lesson prerequisites - please wait...'",
         "lesson_deps": "Rscript /home/rstudio/.workbench/setup_lesson_deps.R",
         "fortify": "Rscript /home/rstudio/.workbench/fortify_renv_cache.R"
+    },
+    "containerEnv": {
+        "DISABLE_AUTH": "true"
     }
 }

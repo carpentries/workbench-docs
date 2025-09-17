@@ -54,9 +54,67 @@ To use devcontainers you need:
 - Docker: please read the [Docker installation instructions](#101-docker) to install Docker Desktop or the Docker Engine for your operating system.
 - An IDE that supports devcontainers: We recommend [VSCode](https://code.visualstudio.com/) as it has the most complete and easy to set up devcontainer support. We acknowledge that VSCode is free but not completely open source.
 
-Please note, if you are not comfortable with using Docker or the Workbench, we recommend going through the installation steps below.
+Please note, if you are not comfortable with using Docker or the Workbench, we recommend going through the [manual installation](#101-manual) steps below.
 
-Once you have Docker set up, please follow our full instructions in the [devcontainer documentation](../devcontainer.md).
+### Starting up the devcontainer
+
+Make sure Docker Desktop is running and that you are connected to the Internet.
+
+Open VSCode:
+
+- either, by double clicking the icon in your OS, going to `File`, `Open Folder...`, and navigating to a lesson folder 
+- or, open a terminal, navigate to a lesson folder and start VSCode by typing:
+
+```bash
+  cd ~/lessons/shell-novice
+  code .
+```
+
+NB: Note the space between `code` and `.`!
+
+Once VSCode has opened the folder, after a short time, a popup should appear in the bottom right of the IDE saying `Folder contains a Devcontainer configuration file. Reopen folder to develop in a container`, with an option button to `Reopen in container`.
+Click this button and wait for VSCode to read the configuration file and setup the devcontainer environment.
+
+:::::::::::::::::::: callout
+
+### Troubleshooting
+
+If this popup does not appear, open the command menu in VSCode with the <kbd>F1</kbd> function key.
+Your cursor will appear in the command menu bar at the top of the window, prefixed with a `>` symbol.
+Start typing `open folder` and select the `Dev Containers: Open Folder in Container...` option.
+
+Similarly if you have any issues with the container at any point, you can open the command menu with <kbd>F1</kbd>, start typing `rebuild`, and select the `Dev Containers: Rebuild and Reopen in Container...`. This should be used judiciously as it will often reinstall dependencies so can take a few minutes.
+
+::::::::::::::::::::::::::::
+
+Various popups will appear in the bottom right, showing progress.
+You can click on the `Show log` link in any of the popups that show it to see any logs of the setup process.
+
+The setup process can take a few minutes the first time you run it for a lesson.
+After the first time, it will be much quicker to start subsequent uses of the environment as the Docker image would be downloaded and stored for reuse.
+
+:::::::::::::::::::: callout
+
+### Lessons with a lot of dependencies
+
+For those RMarkdown lessons that require a large number of R packages, this first start of the devcontainer can take quite a long time.
+
+::::::::::::::::::::::::::::
+
+
+### Running the Workbench
+
+Open a terminal in VSCode by going to the `Terminal` menu in the top menu bar and click `New Terminal`.
+An Ubuntu `bash` terminal window should appear in VSCode.
+This bash shell will be running **inside** the devcontainer, so should look something like:
+
+```bash
+rstudio@55a86b63e4ab:~/lesson$ 
+```
+
+Here, you can perform any shell or R actions as you would usually for lesson development.
+
+For more information and information, please check the full [devcontainer documentation](devcontainer.md).
 
 ::::::::::::::::::::: callout
 
@@ -69,6 +127,14 @@ Getting devcontainers to work in other fully open source IDEs like `vscodium` an
 Therefore we would recommend using VSCode as whilst it is partially open source, it is a reliable and very well supported piece of software.
 
 If this is not an option, then we would recommend either using the [Docker image directly](#101-docker) as it comes bundled with RStudio which you can use to work on your lesson.
+
+**Sneaky extra:** If you want to run RStudio Server from VSCode, in a terminal shell running in the VSCode devcontainer, type:
+
+```bash
+~/start.sh
+```
+
+This will start the RStudio Server within the devcontainer, and you can then access RStudio by opening a web browser and going to `http://localhost:8787`. Fancy!
 
 :::::::::::::::::::::::::::::
 
@@ -84,6 +150,7 @@ To add devcontainer support to a pre-existing lesson, please follow the [devcont
 We will also be rolling these out into existing lessons across our official lesson programs too!
 
 :::::::::::::::::::::::::::::
+
 
 ## Docker {#101-docker}
 
@@ -667,6 +734,17 @@ If the installation did not work, please [raise an issue on GitHub](https://gith
 You will need to make sure your git session is connected to GitHub.
 To do so, you will need to use an SSH or HTTPS protocol.
 If you already know how to push and pull from GitHub using the command line, you do not need to worry about setting this up.
+
+:::::::::::::::: callout
+
+### Docker/devcontainers and git
+
+If you already have your git installation configured outside the Docker/devcontainer environment, the various scripts and commands used in this documentation include mapping your local SSH (and GPG signing) configuration into the container.
+This means your git commands should "just work" inside the container as they would outside.
+
+If you have any issues, please open an issue on the [workbench-docker](https://github.com/carpentries/workbench-docker/issues) GitHub repo.
+
+::::::::::::::::::::::::
 
 If you do not have this set up, you should [choose a protocol](https://docs.github.com/en/github/getting-started-with-github/about-remote-repositories) and then set them up according to the instructions from GitHub.
 

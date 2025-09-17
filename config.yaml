@@ -14,7 +14,7 @@ title: 'Workbench Docs' # FIXME
 created: 2025-06-30
 
 # Comma-separated list of keywords for the lesson
-keywords: 'workbench, sandpaper, pegboard, varnish, The Carpentries, lessons'
+keywords: 'workbench, sandpaper, pegboard, varnish, The Carpentries, lessons, docker, devcontainers'
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
@@ -62,6 +62,7 @@ episodes:
 learners:
 - setup.md
 - faq.md
+- devcontainer.md
 - docker.md
 
 # Information for Instructors
