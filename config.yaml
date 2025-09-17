@@ -38,18 +38,6 @@ contact: 'team@carpentries.org'
 # individual pages in each dropdown section. Leave blank to
 # include all pages in the folder.
 #
-# Example -------------
-#
-# episodes:
-# - introduction.md
-# - first-steps.md
-#
-# learners:
-# - setup.md
-#
-# instructors:
-# - instructor-notes.md
-#
 # profiles:
 # - one-learner.md
 # - another-learner.md
@@ -61,9 +49,9 @@ episodes:
 # Information for Learners
 learners:
 - setup.md
-- faq.md
 - devcontainer.md
 - docker.md
+- faq.md
 
 # Information for Instructors
 instructors:
