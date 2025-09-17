@@ -26,5 +26,8 @@
     "containerEnv": {
         "DISABLE_AUTH": "true",
         "GPG_TTY": "/dev/pts/0"
+    },
+    "hostRequirements": {
+        "cpus": 2
     }
 }

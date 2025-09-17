@@ -1,4 +1,4 @@
-FROM carpentries/workbench-docker:dev-0.2.2
+FROM carpentries/workbench-docker:latest
 
 ##  this could be used to run userland scripts e.g.
 ##  users could add specific dependencies or configurations
