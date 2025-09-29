@@ -5,7 +5,7 @@ title: 'Devcontainer Extras'
 It is good practice to use separate environments when developing software.
 Many solutions exist across different programming languages and operating systems.
 
-The Workbench needs additional system and R dependencies to work, and these can be long-winded to install.
+The Workbench needs additional system and R dependencies to work, and these can be time consuming to install.
 As such, we provide specific separate environments using Docker which have all the required dependencies installed for you, so you can get to using the Workbench straight away on any PC or operating system that supports Docker.
 
 :::::::::::::::::::::: prereq
