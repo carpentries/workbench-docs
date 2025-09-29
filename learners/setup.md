@@ -114,7 +114,7 @@ rstudio@55a86b63e4ab:~/lesson$
 
 Here, you can perform any shell or R actions as you would usually for lesson development.
 
-For more information and information, please check the full [devcontainer documentation](devcontainer.md).
+For more information, please check the full [devcontainer documentation](devcontainer.md).
 
 ::::::::::::::::::::: callout
 
