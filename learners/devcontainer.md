@@ -2,7 +2,7 @@
 title: 'Devcontainer Extras'
 ---
 
-It's good practice to use separate environments when developing software.
+It is good practice to use separate environments when developing software.
 Many solutions exist across different programming languages and operating systems.
 
 The Workbench needs additional system and R dependencies to work, and these can be long-winded to install.
