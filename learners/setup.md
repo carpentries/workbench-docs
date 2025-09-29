@@ -28,7 +28,7 @@ We provide four mechanisms to interact with the Workbench:
   - **Initial setup with docker is very straightfoward but can get complicated depending on your operating system!**
 - Manual local installation (local)
   - Installing all the requirements manually on your local operating system is a longer process, but can be useful if you want to learn how to get an environment set up and will teach you more about the Workbench framework.
-  - **If docker and devcontainers are not suitable for you, installing things manually is completely acceptable!**
+  - **If Docker and devcontainers are not suitable for you, installing things manually is a great option and still relatively quick to do!**
 - GitHub (online)
   - Moving your development completely online by using GitHub's Codespaces or Dev environment is an excellent choice if you have fast internet and are comfortable with this process.
   - **Be advised that this option may incur a cost depending on your GitHub account status!**
@@ -39,7 +39,7 @@ We provide four mechanisms to interact with the Workbench:
 
 You can use the Workbench completely within devcontainers or Docker locally, or through GitHub using our templates.
 
-However, we still would recommend working through the [local setup instructions](#101-manual) at least once as they will be useful for lesson development and debugging in future.
+However, we still would recommend working through the [local setup instructions](#101-manual) at least once as they can save you a lot of time during lesson development and debugging in future.
 
 :::::::::::::::::::::::::::::
 
@@ -52,7 +52,8 @@ This can make it much quicker to get up and running with lesson development.
 To use devcontainers you need:
 
 - Docker: please read the [Docker installation instructions](#101-docker) to install Docker Desktop or the Docker Engine for your operating system.
-- An IDE that supports devcontainers: We recommend [VSCode](https://code.visualstudio.com/) as it has the most complete and easy to set up devcontainer support. We acknowledge that VSCode is free but not completely open source.
+- An IDE that supports devcontainers: We recommend [VSCode](https://code.visualstudio.com/) as it has the most complete and easy to set up devcontainer support. 
+  We acknowledge that VSCode is free but not completely open source.
 
 Please note, if you are not comfortable with using Docker or the Workbench, we recommend going through the [manual installation](#101-manual) steps below.
 
@@ -72,14 +73,14 @@ Open VSCode:
 
 NB: Note the space between `code` and `.`!
 
-Once VSCode has opened the folder, after a short time, a popup should appear in the bottom right of the IDE saying `Folder contains a Devcontainer configuration file. Reopen folder to develop in a container`, with an option button to `Reopen in container`.
+Once VSCode has opened the folder, after a short time, a pop-up should appear in the bottom right of the IDE saying `Folder contains a Devcontainer configuration file. Reopen folder to develop in a container`, with an option button to `Reopen in container`.
 Click this button and wait for VSCode to read the configuration file and setup the devcontainer environment.
 
 :::::::::::::::::::: callout
 
 ### Troubleshooting
 
-If this popup does not appear, open the command menu in VSCode with the <kbd>F1</kbd> function key.
+If this pop-up does not appear, open the command menu in VSCode with the <kbd>F1</kbd> function key.
 Your cursor will appear in the command menu bar at the top of the window, prefixed with a `>` symbol.
 Start typing `open folder` and select the `Dev Containers: Open Folder in Container...` option.
 
@@ -87,7 +88,7 @@ Similarly if you have any issues with the container at any point, you can open t
 
 ::::::::::::::::::::::::::::
 
-Various popups will appear in the bottom right, showing progress.
+Various pop-ups will appear in the bottom right, showing progress.
 You can click on the `Show log` link in any of the popups that show it to see any logs of the setup process.
 
 The setup process can take a few minutes the first time you run it for a lesson.
@@ -97,7 +98,7 @@ After the first time, it will be much quicker to start subsequent uses of the en
 
 ### Lessons with a lot of dependencies
 
-For those RMarkdown lessons that require a large number of R packages, this first start of the devcontainer can take quite a long time.
+For those R Markdown lessons that require a large number of R packages, this first start of the devcontainer can take quite a long time.
 
 ::::::::::::::::::::::::::::
 
@@ -122,7 +123,7 @@ For more information, please check the full [devcontainer documentation](devcont
 
 Sadly the devcontainer specification is only fully supported in a small number of IDEs.
 VSCode is recommended in our lessons and it natively supports devcontainers.
-Getting devcontainers to work in other fully open source IDEs like `vscodium` and `zed` are not as simple as to be easy for novices.
+Getting devcontainers to work in other fully open source IDEs like `vscodium` and `zed` are not as simple.
 
 Therefore we would recommend using VSCode as whilst it is partially open source, it is a reliable and very well supported piece of software.
 
