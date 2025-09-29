@@ -73,7 +73,7 @@ Save the file, and rebuild the container by opening the command menu with <kbd>F
 
 ### What Docker image versions are available?
 
-The full list of Docker images and their version `tags` are [on Dockerhub](https://hub.docker.com/r/carpentries/workbench-docker/tags).
+The full list of Docker images and their version _tags_ are [on Dockerhub](https://hub.docker.com/r/carpentries/workbench-docker/tags).
 
 :::::::::::::::::::::::::::::::
 
