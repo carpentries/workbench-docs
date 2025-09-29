@@ -46,7 +46,7 @@ In this case, select "yes".
 If you are using RStudio, you can open it by:
 
 - going to the RStudio Server URL provided when you run the Docker or devcontainer environment
-- double-clicking on the RStudio icon in your application launcher
+- or, double-clicking on the RStudio icon in your application launcher
 
 You do not have to open R separately to use RStudio.
 
