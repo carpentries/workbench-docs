@@ -26,10 +26,10 @@ The first thing to check is that a lesson supports devcontainers.
 
 Any lesson that has:
 
-- A `.devcontainer` folder
-- A `Dockerfile` and `devcontainer.json` inside that folder
+- A `.devcontainer` folder in the root of its repository
+- and a `Dockerfile` and `devcontainer.json` inside that folder
 
-in the root of its repository can be run inside a devcontainer.
+can be run inside a devcontainer.
 
 An example can be seen in [this repository](https://github.com/carpentries/workbench-docs/tree/main/.devcontainer).
 
