@@ -189,7 +189,7 @@ curl -s https://raw.githubusercontent.com/carpentries/workbench-docker/main/scri
 curl -s https://raw.githubusercontent.com/carpentries/workbench-docker/main/scripts/run_workbench.sh | bash
 ```
 
-Or more longhand if you want to control various docker options:
+Or with `docker run` directly, if you want to control various docker options:
 
 ```bash
 docker run --name carpentries-workbench \
