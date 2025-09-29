@@ -742,7 +742,7 @@ If you already know how to push and pull from GitHub using the command line, you
 If you already have your git installation configured outside the Docker/devcontainer environment, the various scripts and commands used in this documentation include mapping your local SSH (and GPG signing) configuration into the container.
 This means your git commands should "just work" inside the container as they would outside.
 
-If you have any issues, please open an issue on the [workbench-docker](https://github.com/carpentries/workbench-docker/issues) GitHub repo.
+If you have any issues, please open an issue on the [workbench-docker](https://github.com/carpentries/workbench-docker/issues) GitHub repo and/or ask for help on the `workbench` channel in [The Carpentries Slack workspace](https://carpentries.org/community/get-involved/).
 
 ::::::::::::::::::::::::
 
