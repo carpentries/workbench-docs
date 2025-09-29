@@ -5,7 +5,7 @@ title: "Building Lessons"
 :::::::::::::::::::::::::::::::::::::: questions 
 
 - How do we build lessons using a local Workbench installation?
-- How do we huild lessons using the online GitHub architecture?
+- How do we build lessons using the online GitHub architecture?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
