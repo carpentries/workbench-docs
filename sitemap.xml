@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://carpentries.github.io/workbench-docs/01-first-lesson.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-docs/404.html</loc>
   </url>
   <url>
@@ -13,6 +16,12 @@
     <loc>https://carpentries.github.io/workbench-docs/aio.html</loc>
   </url>
   <url>
+    <loc>https://carpentries.github.io/workbench-docs/devcontainer.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-docs/docker.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-docs/faq.html</loc>
   </url>
   <url>
@@ -20,6 +29,9 @@
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-docs/index.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-docs/instructor/01-first-lesson.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-docs/instructor/404.html</loc>
@@ -32,6 +44,12 @@
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-docs/instructor/aio.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-docs/instructor/devcontainer.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-docs/instructor/docker.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-docs/instructor/faq.html</loc>

@@ -99,7 +99,7 @@
           <button class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             More <i data-feather="chevron-down"></i>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><hr><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li><li><a class="dropdown-item" href="reference.html">Reference</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><hr><li><a class="dropdown-item" href="devcontainer.html">Devcontainer Extras</a></li><li><a class="dropdown-item" href="docker.html">Docker Extras</a></li><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li>
           </ul></li>
       </ul></div>
     <!--
@@ -210,7 +210,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Using Markdown</a>
+        <a href="01-first-lesson.html">1. Building Lessons</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -238,7 +238,7 @@
                       <li>
                         <a href="../instructor/images.html">Extract All Images</a>
                       </li>
-                      <hr><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li><li><a class="dropdown-item" href="reference.html">Reference</a></li>
+                      <hr><li><a class="dropdown-item" href="devcontainer.html">Devcontainer Extras</a></li><li><a class="dropdown-item" href="docker.html">Docker Extras</a></li><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li>
                     </ul></div>
                 </div>
               </div>
@@ -258,11 +258,11 @@
         <!-- START: inst/pkgdown/templates/content-syllabus.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link float-end" href="../instructor/introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/01-first-lesson.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="../instructor/introduction.html" rel="next">Next: Using Markdown... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/01-first-lesson.html" rel="next">Next: Building Lessons... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Schedule</h1>
       
@@ -280,13 +280,14 @@ any links that you are not going to use.
 <span class="visually-hidden">Duration: </span>00h 00m
 </td>
 <td>
- 1. <a href="introduction.html">Using Markdown</a>
+ 1. <a href="01-first-lesson.html">Building Lessons</a>
 </td>
 <td>
-How do you write a lesson using Markdown and <a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?
+How do we build lessons using a local Workbench installation?<br>How do
+we build lessons using the online GitHub architecture?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>00h 12m
+<span class="visually-hidden">Duration: </span>00h 10m
 </td>
 <td>
 Finish
@@ -299,13 +300,7 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><div class="section level3">
-<h3 id="local-vs-online">Local vs Online<a class="anchor" aria-label="anchor" href="#local-vs-online"></a></h3>
-<p>You can use the Workbench completely within GitHub using our
-templates, but we recommend working through the local setup instructions
-as they will be useful for lesson development and debugging.</p>
-</div>
-<section><h2 class="section-heading" id="id_101-local">Local Installation of the Workbench<a class="anchor" aria-label="anchor" href="#id_101-local"></a></h2>
+      </section><section id="setup"><section><h2 class="section-heading" id="id_101-install">Installation of the Workbench<a class="anchor" aria-label="anchor" href="#id_101-install"></a></h2>
 <hr class="half-width"><p>The Workbench lesson infrastructure is built on Git, the R language,
 and pandoc. It consists of four components:</p>
 <ol style="list-style-type: decimal"><li>The source content, i.e. the “lesson” (plain markdown or RMarkdown
@@ -321,7 +316,279 @@ lesson website</li>
 source content and the Workbench tools to author and preview your
 lesson.</p>
 <div class="section level3">
-<h3 id="required">Required Software<a class="anchor" aria-label="anchor" href="#required"></a></h3>
+<h3 id="what-installation-method-should-i-choose">What installation method should I choose?<a class="anchor" aria-label="anchor" href="#what-installation-method-should-i-choose"></a></h3>
+<p>We provide four mechanisms to interact with the Workbench:</p>
+<ul><li>Devcontainers (online or local) <strong>[recommended]</strong>
+<ul><li>We recommend using devcontainers as everything will be installed for
+you whether you are using an online or local environment, with minimal
+setup.</li>
+<li>Lessons with devcontainer support will have a
+<code>.devcontainer</code> folder in the root of the repository.</li>
+<li><strong>If no devcontainer is available for the lesson you wish to
+work on, please use the manual installation route, or Docker if you are
+comfortable with it.</strong></li>
+</ul></li>
+<li>Docker (local)
+<ul><li>The Docker option can be useful for those that already have
+experience with Docker and containers, and are happy to do some manual
+configuration or wish to have more flexibility.</li>
+<li><strong>Initial setup with docker is very straightfoward but can get
+complicated depending on your operating system!</strong></li>
+</ul></li>
+<li>Manual local installation (local)
+<ul><li>Installing all the requirements manually on your local operating
+system is a longer process, but can be useful if you want to learn how
+to get an environment set up and will teach you more about the Workbench
+framework.</li>
+<li><strong>If Docker and devcontainers are not suitable for you,
+installing things manually is a great option and still relatively quick
+to do!</strong></li>
+</ul></li>
+<li>GitHub (online)
+<ul><li>Moving your development completely online by using GitHub’s
+Codespaces or Dev environment is an excellent choice if you have fast
+internet and are comfortable with this process.</li>
+<li><strong>Be advised that this option may incur a cost depending on
+your GitHub account status!</strong></li>
+</ul></li>
+</ul><div id="why-would-i-want-to-install-locally-if-all-these-other-options-exist" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="why-would-i-want-to-install-locally-if-all-these-other-options-exist" class="callout-inner">
+<h3 class="callout-title">Why would I want to install locally if all
+these other options exist?</h3>
+<div class="callout-content">
+<p>You can use the Workbench completely within devcontainers or Docker
+locally, or through GitHub using our templates.</p>
+<p>However, we still would recommend working through the <a href="#id_101-manual">local setup instructions</a> at least once as they
+can save you a lot of time during lesson development and debugging in
+future.</p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="id_101-devcontainer">Devcontainers<a class="anchor" aria-label="anchor" href="#id_101-devcontainer"></a></h2>
+<hr class="half-width"><p>Devcontainers are a way of remotely or locally setting up a coding
+environment based on a preconfigured “blueprint”. This blueprint is used
+by Integrated Development Environments (IDEs) like VSCode, vscodium,
+IDEA, or Zed, to initiate and configure an environment for you. This can
+make it much quicker to get up and running with lesson development.</p>
+<p>To use devcontainers you need:</p>
+<ul><li>Docker: please read the <a href="#id_101-docker">Docker installation
+instructions</a> to install Docker Desktop or the Docker Engine for your
+operating system.</li>
+<li>An IDE that supports devcontainers: We recommend <a href="https://code.visualstudio.com/" class="external-link">VSCode</a> as it has the most
+complete and easy to set up devcontainer support. We acknowledge that
+VSCode is free but not completely open source.</li>
+</ul><p>Please note, if you are not comfortable with using Docker or the
+Workbench, we recommend going through the <a href="#id_101-manual">manual installation</a> steps below.</p>
+<div class="section level3">
+<h3 id="starting-up-the-devcontainer">Starting up the devcontainer<a class="anchor" aria-label="anchor" href="#starting-up-the-devcontainer"></a></h3>
+<p>Make sure Docker Desktop is running and that you are connected to the
+Internet.</p>
+<p>Open VSCode:</p>
+<ul><li>either, by double clicking the icon in your OS, going to
+<code>File</code>, <code>Open Folder...</code>, and navigating to a
+lesson folder</li>
+<li>or, open a terminal, navigate to a lesson folder and start VSCode by
+typing:</li>
+</ul><div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>  <span class="bu">cd</span> ~/lessons/shell-novice</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  <span class="ex">code</span> .</span></code></pre>
+</div>
+<p>NB: Note the space between <code>code</code> and <code>.</code>!</p>
+<p>Once VSCode has opened the folder, after a short time, a pop-up
+should appear in the bottom right of the IDE saying
+<code>Folder contains a Devcontainer configuration file. Reopen folder to develop in a container</code>,
+with an option button to <code>Reopen in container</code>. Click this
+button and wait for VSCode to read the configuration file and setup the
+devcontainer environment.</p>
+<div id="troubleshooting" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="troubleshooting" class="callout-inner">
+<h3 class="callout-title">Troubleshooting</h3>
+<div class="callout-content">
+<p>If this pop-up does not appear, open the command menu in VSCode with
+the <kbd>F1</kbd> function key. Your cursor will appear in the command
+menu bar at the top of the window, prefixed with a <code>&gt;</code>
+symbol. Start typing <code>open folder</code> and select the
+<code>Dev Containers: Open Folder in Container...</code> option.</p>
+<p>Similarly if you have any issues with the container at any point, you
+can open the command menu with <kbd>F1</kbd>, start typing
+<code>rebuild</code>, and select the
+<code>Dev Containers: Rebuild and Reopen in Container...</code>. This
+should be used judiciously as it will often reinstall dependencies so
+can take a few minutes.</p>
+</div>
+</div>
+</div>
+<p>Various pop-ups will appear in the bottom right, showing progress.
+You can click on the <code>Show log</code> link in any of the popups
+that show it to see any logs of the setup process.</p>
+<p>The setup process can take a few minutes the first time you run it
+for a lesson. After the first time, it will be much quicker to start
+subsequent uses of the environment as the Docker image would be
+downloaded and stored for reuse.</p>
+<div id="lessons-with-a-lot-of-dependencies" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="lessons-with-a-lot-of-dependencies" class="callout-inner">
+<h3 class="callout-title">Lessons with a lot of dependencies</h3>
+<div class="callout-content">
+<p>For those R Markdown lessons that require a large number of R
+packages, this first start of the devcontainer can take quite a long
+time.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="running-the-workbench">Running the Workbench<a class="anchor" aria-label="anchor" href="#running-the-workbench"></a></h3>
+<p>Open a terminal in VSCode by going to the <code>Terminal</code> menu
+in the top menu bar and click <code>New Terminal</code>. An Ubuntu
+<code>bash</code> terminal window should appear in VSCode. This bash
+shell will be running <strong>inside</strong> the devcontainer, so
+should look something like:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">rstudio@55a86b63e4ab:~/lesson$</span> </span></code></pre>
+</div>
+<p>Here, you can perform any shell or R actions as you would usually for
+lesson development.</p>
+<p>For more information, please check the full <a href="devcontainer.html">devcontainer documentation</a>.</p>
+<div id="what-if-i-dont-want-to-use-vscode" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="what-if-i-dont-want-to-use-vscode" class="callout-inner">
+<h3 class="callout-title">What if I don’t want to use VSCode?</h3>
+<div class="callout-content">
+<p>Sadly the devcontainer specification is only fully supported in a
+small number of IDEs. VSCode is recommended in our lessons and it
+natively supports devcontainers. Getting devcontainers to work in other
+fully open source IDEs like <code>vscodium</code> and <code>zed</code>
+are not as simple.</p>
+<p>Therefore we would recommend using VSCode as whilst it is partially
+open source, it is a reliable and very well supported piece of
+software.</p>
+<p>If this is not an option, then we recommend using the <a href="#id_101-docker">Docker image directly</a> as it comes bundled with
+RStudio which you can use to work on your lesson.</p>
+<p><strong>Sneaky extra:</strong> If you want to run RStudio Server from
+VSCode, in a terminal shell running in the VSCode devcontainer,
+type:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">~/start.sh</span></span></code></pre>
+</div>
+<p>This will start the RStudio Server within the devcontainer, and you
+can then access RStudio by opening a web browser and going to
+<code>http://localhost:8787</code>. Fancy!</p>
+</div>
+</div>
+</div>
+<div id="are-devcontainers-available-for-all-lessons" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="are-devcontainers-available-for-all-lessons" class="callout-inner">
+<h3 class="callout-title">Are devcontainers available for all
+lessons?</h3>
+<div class="callout-content">
+<p>Devcontainer blueprints are already provided by our <a href="https://github.com/carpentries/workbench-template-rmd" class="external-link">workbench-template-rmd</a>
+and <a href="https://github.com/carpentries/workbench-template-md" class="external-link">workbench-template-md</a>
+lesson templates, so when creating a new lesson you will get access to
+devcontainers automatically.</p>
+<p>However, not all Workbench-compatible lessons will have devcontainers
+enabled (a <code>.devcontainer</code> folder within the repository). To
+add devcontainer support to a pre-existing lesson, please follow the <a href="todo.html">devcontainer import instructions TODO</a></p>
+<p>We will also be rolling these out into existing lessons across our
+official lesson programs too!</p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="id_101-docker">Docker<a class="anchor" aria-label="anchor" href="#id_101-docker"></a></h2>
+<hr class="half-width"><p>The documentation below for each operating system goes through how to
+manually install the Workbench dependencies, requirements, and packages.
+To make this lengthy process shorter, the Workbench development team
+also provides Docker images of each release of the Workbench that are
+used for our GitHub workflows that build our core curriculum lessons.
+You can use these Docker images to run the Workbench on your local
+system too!</p>
+<p>Docker Desktop is available for all operating systems (Windows, Mac
+and Linux), so we recommend installing this.</p>
+<div class="section level3">
+<h3 id="docker-desktop">Docker Desktop<a class="anchor" aria-label="anchor" href="#docker-desktop"></a></h3>
+<p>Install Docker Desktop for <a href="https://docs.docker.com/desktop/" class="external-link">your operating system</a>.</p>
+<p>Once installed, choose one of the following ways to interact with the
+Docker system:</p>
+<ol style="list-style-type: decimal"><li>Via the Docker Desktop GUI app</li>
+<li>Via the command line terminal (bash on Linux/Windows WSL/git bash,
+terminal on the Mac)</li>
+</ol></div>
+<div class="section level3">
+<h3 id="running-the-workbench-docker-container">Running the Workbench Docker container<a class="anchor" aria-label="anchor" href="#running-the-workbench-docker-container"></a></h3>
+<p>After Docker Desktop/Docker Engine is set up, you can use the
+following command from the terminal (<code>git bash</code>, WSL, or
+MacOS Terminal app):</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># go home</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="bu">cd</span> ~</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># make a `lessons` folder in your home directory and clone in a lesson</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">mkdir</span> ~/lessons</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="bu">cd</span> ~/lessons</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:swcarpentry/shell-novice.git</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co"># create a workbench-lessons named volume, and copy in the shell-novice content</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> https://raw.githubusercontent.com/carpentries/workbench-docker/main/scripts/setup_named_volume.sh <span class="kw">|</span> <span class="fu">bash</span> <span class="at">-s</span> <span class="at">--</span> ~/lessons/shell-novice</span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co"># start the workbench container</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> https://raw.githubusercontent.com/carpentries/workbench-docker/main/scripts/run_workbench.sh <span class="kw">|</span> <span class="fu">bash</span></span></code></pre>
+</div>
+<p>Or with <code>docker run</code> directly, if you want to control
+various docker options:</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> carpentries-workbench <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>           <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>           <span class="at">-v</span> ~/.ssh:/home/rstudio/.ssh:ro <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>           <span class="at">-v</span> ~/.gitconfig:/home/rstudio/.gitconfig <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>           <span class="at">-e</span> DISABLE_AUTH=true <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>           <span class="at">-d</span> carpentries/workbench-docker:latest</span></code></pre>
+</div>
+<p>In the Docker Desktop app, you should see an entry appear in the
+“Containers” tab with the name <code>carpentries-workbench</code>.</p>
+<p>You can now open a web browser and navigate to
+<code>http://localhost:8787</code> which will connect to the RStudio
+server running in the Docker container. You’re good to go! Please
+continue with the <a href="#install-test">Test Your Installation</a>
+instructions.</p>
+<p>More information and docker runtime options are described in the <a href="docker.html">Docker guide</a> and <a href="https://github.com/froggleston/workbench-dev/blob/frog-docker-update-1/docker.qmd" class="external-link">Workbench
+developer docker documentation</a>.</p>
+<p>Please note, if you are not comfortable with Docker or the Workbench,
+we recommend going through the <a href="#id_101-manual">manual
+installation steps</a> below.</p>
+</div>
+</section><section><h2 class="section-heading" id="id_101-manual">Manual Local Installation<a class="anchor" aria-label="anchor" href="#id_101-manual"></a></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="id_101-required">Required Software<a class="anchor" aria-label="anchor" href="#id_101-required"></a></h3>
 <p>This setup document will take you through the process of installing
 or upgrading the required software on your local computer or server.</p>
 <ol style="list-style-type: decimal"><li><p><strong><a href="https://git-scm.com/" class="external-link">Git</a></strong> (≥ 2.28
@@ -346,7 +613,7 @@ recommended)</p></li>
 parser required by {pegboard})</li>
 </ol><p>Once you have Git, R, and Pandoc installed, these packages can be
 installed and updated via:</p>
-<div class="codewrapper sourceCode" id="cb1">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -356,7 +623,7 @@ installed and updated via:</p>
 </li>
 </ol></div>
 <div class="section level3">
-<h3 id="recommend">Recommended Software<a class="anchor" aria-label="anchor" href="#recommend"></a></h3>
+<h3 id="id_101-recommend">Recommended Software<a class="anchor" aria-label="anchor" href="#id_101-recommend"></a></h3>
 <p>If you are using R or pandoc for the first time, we recommend using
 <a href="https://posit.co/" class="external-link">the RStudio IDE</a> for the following
 reasons:</p>
@@ -374,39 +641,11 @@ tools with which you’re most familiar. If you feel comfortable using a
 different tool (e.g. the command line or VSCode), then you should
 install R and pandoc separately and make sure that they are in your
 PATH.</p>
-</div>
-<div class="section level3">
-<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a></h3>
-<p>This will guide you through installing the foundational software and
-infrastructure packages on your computer.</p>
 <p>If you already have software installed and are curious if you should
 update it to a newer version, the answer is almost always, yes. Newer
 versions will often contain important bug fixes that are important to
 the security of your computer.</p>
 <p>Jump to the installation instructions for your system: <a href="#windows">Windows</a>, <a href="#mac">MacOS</a>, or <a href="#linux">Linux</a>.</p>
-<div id="optional-setting-up-the-workbench-environment-using-docker" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="optional-setting-up-the-workbench-environment-using-docker" class="callout-inner">
-<h3 class="callout-title">Optional: Setting up the Workbench environment
-using Docker</h3>
-<div class="callout-content">
-<p>The following documentation goes through how to manually install the
-Workbench dependencies, requirements, and packages.</p>
-<p>The Workbench development team also provides Docker images of each
-release of the Workbench that are used for our GitHub workflows that
-build our core curriculum lessons. However, you can use these Docker
-images to run the Workbench on your local system too!</p>
-<p>If you are interested in using these images to build your lessons,
-please read the <a href="https://github.com/froggleston/workbench-dev/blob/frog-docker-update-1/docker.qmd" class="external-link">Workbench
-Docker setup instructions</a>.</p>
-<p>Please note, if you are not comfortable with Docker or the Workbench,
-we recommend going through the installation steps below.</p>
-</div>
-</div>
-</div>
 </div>
 </section><section><h2 class="section-heading" id="windows">Installing on Windows<a class="anchor" aria-label="anchor" href="#windows"></a></h2>
 <hr class="half-width"><div class="section level3">
@@ -421,10 +660,10 @@ pressing <kbd>Windows</kbd>+<kbd>R</kbd> and type <code>cmd</code> to
 bring up the command prompt. From there, you can type
 <code>git --version</code> to see the version of your git installation.
 You might see something like this:</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -470,10 +709,10 @@ command line by pressing <kbd>Windows</kbd>+<kbd>R</kbd> and type
 <code>cmd</code> to bring up the command prompt. From there, you can
 type <code>R --version</code> at the prompt. Your output should be
 similar to below, with a version ≥ 4.x.</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -517,7 +756,7 @@ the infrastructure packages, to make sure it’s discoverable by R.</p>
 <p>To install the R packages, you will need to <strong>open
 RStudio</strong> (or start R from the command line if you did not
 install RStudio) and enter the following lines into the console.</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -542,10 +781,10 @@ for workshop participants</a>.</p>
 <h4 id="test-your-installation-2">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-2"></a></h4>
 <p>To test your installation of Git and confirm it works, open
 <strong>Terminal.app</strong> and type the following:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -591,10 +830,10 @@ helpful for parsing the steps of installing R on MacOS.</p>
 <strong>Terminal.app</strong> and typing <code>R --version</code> into
 the prompt. Your output should be similar to below, with a version ≥
 4.x:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -645,7 +884,7 @@ the infrastructure packages, to make sure it’s discoverable by R.</p>
 <p>To install the R packages, you will need to <strong>open
 RStudio</strong> (or start R from the command line if you did not
 install RStudio) and enter the following lines into the console.</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -672,20 +911,20 @@ which will be included in these instructions.</p>
 <h3 id="git-2">Git<a class="anchor" aria-label="anchor" href="#git-2"></a></h3>
 <p>Many distributions include git by default, but it is often outdated.
 It is useful to try to update in case a newer version is available:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository ppa:git-core/ppa</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">sudo</span> apt install git</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository ppa:git-core/ppa</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="fu">sudo</span> apt install git</span></code></pre>
 </div>
 <div class="section level4">
 <h4 id="test-your-installation-5">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-5"></a></h4>
 <p>Test your git installation by opening the terminal and running:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -700,30 +939,30 @@ It is useful to try to update in case a newer version is available:</p>
 check if your platform is supported. Detailed instructions exist <a href="https://cran.r-project.org/bin/linux/ubuntu/" class="external-link">for Ubuntu</a>. Here
 are the commands to register the PPA on your machine and then install
 R:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># update indices</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="at">-qq</span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co"># install two helper packages we need</span></span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--no-install-recommends</span> software-properties-common dirmngr</span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="co"># import the signing key (by Michael Rutter) for these repo</span></span>
-<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="fu">sudo</span> apt-key adv <span class="at">--keyserver</span> keyserver.ubuntu.com <span class="at">--recv-keys</span> E298A3A825C0D65DFD57CBB651716619E084DAB9</span>
-<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="co"># add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed</span></span>
-<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">"deb https://cloud.r-project.org/bin/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> <span class="at">-cs</span><span class="va">)</span><span class="st">-cran40/"</span></span>
-<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="co"># Install R</span></span>
-<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--no-install-recommends</span> r-base</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># update indices</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="at">-qq</span></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="co"># install two helper packages we need</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--no-install-recommends</span> software-properties-common dirmngr</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="co"># import the signing key (by Michael Rutter) for these repo</span></span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="fu">sudo</span> apt-key adv <span class="at">--keyserver</span> keyserver.ubuntu.com <span class="at">--recv-keys</span> E298A3A825C0D65DFD57CBB651716619E084DAB9</span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="co"># add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed</span></span>
+<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">"deb https://cloud.r-project.org/bin/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> <span class="at">-cs</span><span class="va">)</span><span class="st">-cran40/"</span></span>
+<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" tabindex="-1"></a><span class="co"># Install R</span></span>
+<span id="cb22-11"><a href="#cb22-11" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--no-install-recommends</span> r-base</span></code></pre>
 </div>
 <div class="section level4">
 <h4 id="test-your-installation-6">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-6"></a></h4>
 <p>Test your R installation by opening your terminal and running
 <code>R --version</code> into the prompt. Your output should be similar
 to below, with a version ≥ 4.x:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -805,19 +1044,19 @@ Universe</a> and <a href="https://carpentries.r-universe.dev/apis" class="extern
 API</a>. To produce a list (you may need to
 <code>sudo apt install jq</code> if it is not already on your
 system):</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">curl</span> https://carpentries.r-universe.dev/stats/sysdeps <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.headers[0] | select(. != null)'</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">curl</span> https://carpentries.r-universe.dev/stats/sysdeps <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.headers[0] | select(. != null)'</span></span></code></pre>
 </div>
 <p>This list can be sent to <code>apt install</code> to install
 everything:</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> <span class="dt">\</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">curl</span> https://carpentries.r-universe.dev/stats/sysdeps <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.headers[0] | select(. != null)'</span><span class="va">)</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="dt">\</span></span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>  <span class="kw">||</span> <span class="bu">echo</span> <span class="st">"Not on Ubuntu"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> <span class="dt">\</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>  <span class="va">$(</span><span class="ex">curl</span> https://carpentries.r-universe.dev/stats/sysdeps <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.headers[0] | select(. != null)'</span><span class="va">)</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="dt">\</span></span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>  <span class="kw">||</span> <span class="bu">echo</span> <span class="st">"Not on Ubuntu"</span></span></code></pre>
 </div>
 <p>After you have these installed, you will be able to install the
 required R packages without error.</p>
@@ -844,7 +1083,7 @@ you will benefit from pre-built binaries.</p>
 <p>To install the R packages, you will need to <strong>open
 RStudio</strong> (or start R from the command line if you did not
 install RStudio) and enter the following lines into the console:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -887,15 +1126,15 @@ every time you open your terminal:</p>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Open the <code>nano</code> text editor:</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">nano</span> ~/.Rprofile</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">nano</span> ~/.Rprofile</span></code></pre>
 </div>
 <p>And copy and paste the following code at the bottom of the file. Once
 you have done so, type <kbd>Ctrl</kbd>+<kbd>X</kbd> to save and
 exit.</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -962,13 +1201,12 @@ packages. For example, for the error above, use
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="install-test">Test your installation<a class="anchor" aria-label="anchor" href="#install-test"></a></h2>
-<hr class="half-width"><p>Now that you have installed the lesson components, it is a good idea
-to run a small test to verify that these components work together. To
-test your installation <strong>open RStudio</strong> (or launch R if you
-have not installed RStudio) and enter the following commands to confirm
-everything works:</p>
-<div class="codewrapper sourceCode" id="cb26">
+</section><section><h2 class="section-heading" id="install-test">Test your Workbench installation<a class="anchor" aria-label="anchor" href="#install-test"></a></h2>
+<hr class="half-width"><p>To test your installation <strong>open RStudio</strong> either as the
+locally installed app or in the browser if using Docker (or launch R if
+you have not installed RStudio and are not using Docker/devcontainers)
+and enter the following commands to confirm everything works:</p>
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1020,6 +1258,26 @@ issue on GitHub</a>.</p>
 To do so, you will need to use an SSH or HTTPS protocol. If you already
 know how to push and pull from GitHub using the command line, you do not
 need to worry about setting this up.</p>
+<div id="dockerdevcontainers-and-git" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="dockerdevcontainers-and-git" class="callout-inner">
+<h3 class="callout-title">Docker/devcontainers and git</h3>
+<div class="callout-content">
+<p>If you already have your git installation configured outside the
+Docker/devcontainer environment, the various scripts and commands used
+in this documentation include mapping your local SSH (and GPG signing)
+configuration into the container. This means your git commands should
+“just work” inside the container as they would outside.</p>
+<p>If you have any issues, please open an issue on the <a href="https://github.com/carpentries/workbench-docker/issues" class="external-link">workbench-docker</a>
+GitHub repo and/or ask for help on the <code>workbench</code> channel in
+<a href="https://carpentries.org/community/get-involved/" class="external-link">The
+Carpentries Slack workspace</a>.</p>
+</div>
+</div>
+</div>
 <p>If you do not have this set up, you should <a href="https://docs.github.com/en/github/getting-started-with-github/about-remote-repositories" class="external-link">choose
 a protocol</a> and then set them up according to the instructions from
 GitHub.</p>
@@ -1070,11 +1328,11 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
 </section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link float-end" href="../instructor/introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/01-first-lesson.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="../instructor/introduction.html" rel="next">Next: Using Markdown... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/01-first-lesson.html" rel="next">Next: Building Lessons... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav></div>
 <!-- END  : inst/pkgdown/templates/content-syllabus.html -->
@@ -1112,14 +1370,14 @@ any links that you are not going to use.
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
-  "keywords": "workbench, sandpaper, pegboard, varnish, The Carpentries, lessons",
+  "keywords": "workbench, sandpaper, pegboard, varnish, The Carpentries, lessons, docker, devcontainers",
   "name": "Workbench Docs",
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-docs/instructor/index.html",
   "identifier": "https://carpentries.github.io/workbench-docs/instructor/index.html",
   "dateCreated": "2025-06-30",
-  "dateModified": "2025-09-23",
-  "datePublished": "2025-09-23"
+  "dateModified": "2025-09-29",
+  "datePublished": "2025-09-29"
 }
 
   </script><script>
