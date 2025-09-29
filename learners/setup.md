@@ -126,7 +126,7 @@ Getting devcontainers to work in other fully open source IDEs like `vscodium` an
 
 Therefore we would recommend using VSCode as whilst it is partially open source, it is a reliable and very well supported piece of software.
 
-If this is not an option, then we would recommend either using the [Docker image directly](#101-docker) as it comes bundled with RStudio which you can use to work on your lesson.
+If this is not an option, then we recommend using the [Docker image directly](#101-docker) as it comes bundled with RStudio which you can use to work on your lesson.
 
 **Sneaky extra:** If you want to run RStudio Server from VSCode, in a terminal shell running in the VSCode devcontainer, type:
 
