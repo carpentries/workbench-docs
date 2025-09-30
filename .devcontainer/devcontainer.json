@@ -1,8 +1,14 @@
 {
-    "name": "${localWorkspaceFolderBasename}",
+    "forwardPorts": [8787],
+    "portsAttributes": {
+        "8787": {
+            "label": "RStudio Server",
+            "onAutoForward": "notify"
+        }
+    },
     "remoteUser":"rstudio",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/home/rstudio/lesson,type=bind",
-    "workspaceFolder": "/home/rstudio/lesson",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/rstudio/lessons/${localWorkspaceFolderBasename},type=bind",
+    "workspaceFolder": "/home/rstudio/lessons/${localWorkspaceFolderBasename}",
     "mounts": [
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/rstudio/.ssh,type=bind,consistency=cached",
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gnupg,target=/home/rstudio/.gnupg,type=bind,consistency=cached"
@@ -13,8 +19,13 @@
     },
     "postCreateCommand": {
         "pre_echo": "echo 'Installing lesson prerequisites - please wait...'",
-        "tty": "export GPG_TTY=$(tty)",
-        "pre_prep": "bash -c /home/rstudio/.workbench/ci_lesson_pre_prep.sh"
+        "gpg_reset": "gpgconf --kill all",
+        "lesson_deps": "Rscript /home/rstudio/.workbench/setup_lesson_deps.R",
+        "fortify": "Rscript /home/rstudio/.workbench/fortify_renv_cache.R"
+    },
+    "containerEnv": {
+        "DISABLE_AUTH": "true",
+        "GPG_TTY": "/dev/pts/0"
     },
     "hostRequirements": {
         "cpus": 2

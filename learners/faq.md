@@ -4,7 +4,14 @@ title: 'Workbench FAQs'
 
 ## Installation FAQ
 
-### Why does it take 5 lines of code to install the infrastructure?
+### Is the Workbench open source?
+
+Yes! All the Workbench dependencies are open source.
+
+If you are choosing to use Docker or devcontainers, we acknowledge that some of these tools including the VSCode IDE, are not completely open source.
+You do not need to use these technologies to use the Workbench if you choose not to - the manual local installation of the Workbench will work in the exact same way.
+
+### Why does it take 5 lines of code to install the infrastructure locally?
 
 As the Workbench packages are in The Carpentries R-Universe and not CRAN, we need to tell R to get the packages from R-Universe.
 
@@ -34,7 +41,16 @@ In this case, select "yes".
 
 ## Opening your R environment
 
-If you are using RStudio, you can open it by double-clicking on the RStudio icon in your application launcher; you do not have to open R separately to use RStudio.
+### RStudio
+
+If you are using RStudio, you can open it by:
+
+- going to the RStudio Server URL provided when you run the Docker or devcontainer environment
+- or, double-clicking on the RStudio icon in your application launcher
+
+You do not have to open R separately to use RStudio.
+
+### R
 
 If you are using R, you can open it in your terminal application by typing `R`.
 Your prompt will be replaced by a `>`, which indicates that you are in R's interactive [REPL](https://glosario.carpentries.org/en/#repl).
