@@ -1,17 +1,26 @@
 #------------------------------------------------------------
-# The Carpentries Workbench Documentation
+# Values for this lesson.
 #------------------------------------------------------------
 
+# Which carpentry is this (swc, dc, lc, or cp)?
+# swc: Software Carpentry
+# dc: Data Carpentry
+# lc: Library Carpentry
+# cp: Carpentries (to use for instructor training for instance)
+# incubator: The Carpentries Incubator
+# Note that you can also use a custom carpentry type. For more info,
+# see the documentation: https://carpentries.github.io/sandpaper-docs/editing.html
 carpentry: 'cp'
 
-# Alt-text description of the lesson.
-carpentry_description: 'The Carpentries Workbench Documentation'
+# Custom carpentry description
+# This will be used as the alt text for the logo
+# carpentry_description: "Custom Carpentry"
 
 # Overall title for pages.
-title: 'Workbench Docs' # FIXME
+title: 'Workbench Docs'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: 2025-06-30
+created: '2025-06-30'
 
 # Comma-separated list of keywords for the lesson
 keywords: 'workbench, sandpaper, pegboard, varnish, The Carpentries, lessons, docker, devcontainers'
@@ -20,7 +29,7 @@ keywords: 'workbench, sandpaper, pegboard, varnish, The Carpentries, lessons, do
 # possible values: pre-alpha, alpha, beta, stable
 life_cycle: 'pre-alpha'
 
-# License of the lesson
+# License of the lesson materials (recommended CC-BY 4.0)
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
@@ -38,29 +47,44 @@ contact: 'team@carpentries.org'
 # individual pages in each dropdown section. Leave blank to
 # include all pages in the folder.
 #
+# Example -------------
+#
+# episodes:
+# - introduction.md
+# - first-steps.md
+#
+# learners:
+# - setup.md
+#
+# instructors:
+# - instructor-notes.md
+#
 # profiles:
 # - one-learner.md
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes:
+episodes: 
 - 01-first-lesson.md
+- 02-creation-templates.md
 
 # Information for Learners
-learners:
+learners: 
 - setup.md
 - devcontainer.md
 - docker.md
 - faq.md
 
 # Information for Instructors
-instructors:
+instructors: 
 - instructor-notes.md
 
 # Learner Profiles
-profiles:
+profiles: 
 
 # Customisation ---------------------------------------------
 #
 # This space below is where custom yaml items (e.g. pinning
 # sandpaper and varnish versions) should live
+
+carpentry_description: The Carpentries Workbench Documentation
