@@ -1,14 +1,10 @@
 name: "Bot: Comment on the Pull Request"
-
+description: "Comment on the pull request with the results of the markdown generation"
 on:
-  workflow_dispatch:
-    inputs:
-      workflow_id:
-        required: true
-
-concurrency:
-  group: pr-${{ github.event.workflow_run.pull_requests[0].number }}
-  cancel-in-progress: true
+  workflow_run:
+    workflows: ["Bot: Receive Pull Request"]
+    types:
+      - completed
 
 jobs:
   # Pull requests are valid if:
@@ -18,50 +14,17 @@ jobs:
   test-pr:
     name: "Test if pull request is valid"
     runs-on: ubuntu-latest
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      (
-        github.event_name == 'workflow_run' &&
-        (
-          github.event.workflow_run.event == 'pull_request' ||
-          github.event.workflow_run.event == 'workflow_dispatch'
-        ) &&
-        github.event.workflow_run.conclusion == 'success'
-      )
     outputs:
       is_valid: ${{ steps.check-pr.outputs.VALID }}
       payload: ${{ steps.check-pr.outputs.payload }}
       number: ${{ steps.get-pr.outputs.NUM }}
       msg: ${{ steps.check-pr.outputs.MSG }}
     steps:
-      - name: Verify committed files
-        id: changed-files
-        run: |
-          ## Get list of changed files in the PR ##
-          FILES=$(gh pr view ${{ github.event.pull_request.number }} \
-            --json files --jq '.files[].path')
-          FILE_COUNT=$(echo "$FILES" | wc -l)
-
-          # Check if only docker-version.txt changed
-          if [ "$FILE_COUNT" -eq 1 ] && echo "$FILES" | grep -q "^workbench-docker-version\.txt$"; then
-            echo "only_version_file=true" >> $GITHUB_OUTPUT
-          else
-            echo "only_version_file=false" >> $GITHUB_OUTPUT
-          fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Skip checks for Workbench version file updates
-        if: steps.changed-files.outputs.only_version_file == 'true'
-        run: |
-          echo "Only workbench-docker-version.txt changed, skipping preflight checks"
-          exit 0
-
-      - name: 'Download PR artifact'
+      - name: "Download PR artifact"
         id: dl
         uses: carpentries/actions/download-workflow-artifact@main
         with:
-          run: ${{ github.event.workflow_run.id || inputs.workflow_id }}
+          run: ${{ github.event.workflow_run.id }}
           name: 'pr'
 
       - name: "Get PR Number"
@@ -77,6 +40,36 @@ jobs:
         run: |
           echo '::error::A pull request number was not recorded. The pull request that triggered this workflow is likely malicious.'
           exit 1
+
+      - name: "Checkout Lesson"
+        uses: actions/checkout@v4
+
+      - name: "Verify committed files"
+        id: changed-files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ## Get list of changed files in the PR ##
+          ONLY_VERSION=$(gh pr view ${{ steps.get-pr.outputs.NUM }} --json files --jq '
+            .files |
+            length == 1 and
+            .[0].path == ".github/workbench-docker-version.txt"
+          ')
+
+          if [[ "$ONLY_VERSION" == "true" ]]; then
+            echo "only_version_file=true" >> $GITHUB_OUTPUT
+          else
+            echo "only_version_file=false" >> $GITHUB_OUTPUT
+          fi
+        shell: bash
+
+      - name: "Skip checks for Workbench version file updates"
+        if: steps.changed-files.outputs.only_version_file == 'true'
+        run: |
+          echo "# 🔧 Wait for Next Cache Update #"
+          echo "Only workbench-docker-version.txt changed."
+          exit 0
+        shell: bash
 
       - name: "Get Invalid Hashes File"
         id: hash
@@ -98,7 +91,7 @@ jobs:
 
       - name: "Comment result of validation"
         id: comment-diff
-        if: ${{ always() }}
+        if: always()
         uses: carpentries/actions/comment-diff@main
         with:
           pr: ${{ steps.get-pr.outputs.NUM }}
@@ -112,31 +105,31 @@ jobs:
     name: "Create Git Branch"
     needs: test-pr
     runs-on: ubuntu-latest
-    if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
+    if: needs.test-pr.outputs.is_valid == 'true'
     env:
       NR: ${{ needs.test-pr.outputs.number }}
     permissions:
       contents: write
     steps:
-      - name: 'Checkout md outputs'
+      - name: "Checkout md outputs"
         uses: actions/checkout@v4
         with:
           ref: md-outputs
           path: built
           fetch-depth: 1
 
-      - name: 'Download built markdown'
+      - name: "Download built markdown"
         id: dl
         uses: carpentries/actions/download-workflow-artifact@main
         with:
-          run: ${{ github.event.workflow_run.id || inputs.workflow_id }}
+          run: ${{ github.event.workflow_run.id }}
           name: 'built'
 
-      - if: ${{ steps.dl.outputs.success == 'true' }}
+      - if: steps.dl.outputs.success == 'true'
         run: unzip built.zip
 
       - name: "Create orphan and push"
-        if: ${{ steps.dl.outputs.success == 'true' }}
+        if: steps.dl.outputs.success == 'true'
         run: |
           cd built/
           git config --local user.email "actions@github.com"
@@ -158,25 +151,25 @@ jobs:
     name: "Comment on Pull Request"
     needs: [test-pr, create-branch]
     runs-on: ubuntu-latest
-    if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
+    if: needs.test-pr.outputs.is_valid == 'true'
     env:
       NR: ${{ needs.test-pr.outputs.number }}
     permissions:
       pull-requests: write
     steps:
-      - name: 'Download comment artifact'
+      - name: "Download comment artifact"
         id: dl
         uses: carpentries/actions/download-workflow-artifact@main
         with:
-          run: ${{ github.event.workflow_run.id || inputs.workflow_id }}
+          run: ${{ github.event.workflow_run.id }}
           name: 'diff'
 
-      - if: ${{ steps.dl.outputs.success == 'true' }}
+      - if: steps.dl.outputs.success == 'true'
         run: unzip ${{ github.workspace }}/diff.zip
 
       - name: "Comment on PR"
         id: comment-diff
-        if: ${{ steps.dl.outputs.success == 'true' }}
+        if: steps.dl.outputs.success == 'true'
         uses: carpentries/actions/comment-diff@main
         with:
           pr: ${{ env.NR }}
@@ -188,23 +181,25 @@ jobs:
     name: "Comment if workflow files have changed"
     needs: test-pr
     runs-on: ubuntu-latest
-    if: ${{ always() && needs.test-pr.outputs.is_valid == 'false' }}
+    if: |
+      always() &&
+      needs.test-pr.outputs.is_valid == 'false'
     env:
       NR: ${{ needs.test-pr.outputs.number }}
       body: ${{ needs.test-pr.outputs.msg }}
     permissions:
       pull-requests: write
     steps:
-      - name: 'Check for spoofing'
+      - name: "Check for spoofing"
         id: dl
         uses: carpentries/actions/download-workflow-artifact@main
         with:
-          run: ${{ github.event.workflow_run.id || inputs.workflow_id }}
+          run: ${{ github.event.workflow_run.id }}
           name: 'built'
 
-      - name: 'Alert if spoofed'
+      - name: "Alert if spoofed"
         id: spoof
-        if: ${{ steps.dl.outputs.success == 'true' }}
+        if: steps.dl.outputs.success == 'true'
         run: |
           echo 'body<<EOF' >> $GITHUB_ENV
           echo '' >> $GITHUB_ENV
