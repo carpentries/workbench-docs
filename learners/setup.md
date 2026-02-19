@@ -55,7 +55,7 @@ To use devcontainers you need:
 - An IDE that supports devcontainers: We recommend [VSCode](https://code.visualstudio.com/) as it has the most complete and easy to set up devcontainer support. 
   We acknowledge that VSCode is free but not completely open source.
 
-Please note, if you are not comfortable with using Docker or the Workbench, we recommend going through the [manual installation](#101-manual) steps below.
+Please note, if you are not comfortable with using Docker for the Workbench, we recommend going through the [manual installation](#101-manual) steps below.
 
 ### Starting up the devcontainer
 
@@ -696,7 +696,7 @@ fs::dir_tree(tmp, recurse = 1)
 ```
 
 ```output
-[1] '3.10.2'
+[1] '3.9'
 ℹ Consent for package cache revoked. Use `use_package_cache()` to undo.
 → Creating Lesson in '/tmp/RtmpnRjHyr/file12f34734be05f'...
 ✔ First episode created in '/tmp/RtmpnRjHyr/file12f34734be05f/episodes/01-introduction.Rmd'
