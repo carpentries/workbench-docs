@@ -49,6 +49,7 @@ episodes:
 # Information for Learners
 learners:
 - setup.md
+- internals.md
 - devcontainer.md
 - docker.md
 - faq.md
