@@ -4,19 +4,6 @@ title: '101 Quick Start: Setting up your Workbench environment'
 
 ## Installation of the Workbench {#101-install}
 
-The Workbench lesson infrastructure is built on Git, the R language, and pandoc.
-It consists of four components:
-
-1. The source content, i.e. the "lesson" (plain markdown or RMarkdown files organized into folders with a configuration yaml file)
-2. The engine (R package [{sandpaper}]) to process the lesson content markdown to HTML
-3. The validator (R package [{pegboard}]) to parse the source markdown files and highlight common errors
-4. The renderer (R package [{varnish}]) to generate the final HTML, CSS, and JavaScript styling elements for the lesson website
-
-Details of how these tools work together are explained in the [TODO](../episodes/todo.md).
-In short, you can interact with the lesson source content and the Workbench tools to author and preview your lesson.
-
-### What installation method should I choose?
-
 We provide four mechanisms to interact with the Workbench:
 
 - Devcontainers (online or local) **[recommended]**
@@ -33,7 +20,7 @@ We provide four mechanisms to interact with the Workbench:
   - Installing all the requirements manually on your local operating system is a longer process, but can be useful if you want to learn how to get an environment set up and will teach you more about the Workbench framework.
   - **If Docker and devcontainers are not suitable for you, installing things manually is a great option and still relatively quick to do!**
 - GitHub (online)
-  - Moving your development completely online by using GitHub's Codespaces or Dev environment is an excellent choice if you have fast internet and are comfortable with this process.
+  - Moving your development completely online by using GitHub's Codespaces or Dev environment is an excellent choice if you have a reliable internet connection and are comfortable with this process.
   - **Be advised that this option may incur a cost depending on your GitHub account status!**
 
 ::::::::::::::::::::: callout
