@@ -102,7 +102,7 @@
           <button class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             More <i data-feather="chevron-down"></i>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><hr><li><a class="dropdown-item" href="devcontainer.html">Devcontainer Extras</a></li><li><a class="dropdown-item" href="docker.html">Docker Extras</a></li><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><hr><li><a class="dropdown-item" href="internals.html">Workbench Internals</a></li><li><a class="dropdown-item" href="devcontainer.html">Devcontainer Extras</a></li><li><a class="dropdown-item" href="docker.html">Docker Extras</a></li><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li>
           </ul></li>
       </ul></div>
     <!--
@@ -228,7 +228,7 @@
                       <li>
                         <a href="../instructor/images.html">Extract All Images</a>
                       </li>
-                      <hr><li><a class="dropdown-item" href="devcontainer.html">Devcontainer Extras</a></li><li><a class="dropdown-item" href="docker.html">Docker Extras</a></li><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li>
+                      <hr><li><a class="dropdown-item" href="internals.html">Workbench Internals</a></li><li><a class="dropdown-item" href="devcontainer.html">Devcontainer Extras</a></li><li><a class="dropdown-item" href="docker.html">Docker Extras</a></li><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li>
                     </ul></div>
                 </div>
               </div>
@@ -257,8 +257,63 @@
       <hr></nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Schedule</h1>
       
 
-<p>The following documentation summarises the steps needed to get
-started using the Workbench tools.</p>
+<p>Welcome to the documentation for The Carpentries Workbench.</p>
+<p>The Workbench is a suite of tools that takes lesson material content
+written in simple text, and builds a neat and consistent static
+website.</p>
+<p>It is built on Git, the R language, and pandoc, and consists of four
+components:</p>
+<ol style="list-style-type: decimal"><li>The source content, i.e. the “lesson” (plain markdown or RMarkdown
+files organized into folders with a configuration yaml file)</li>
+<li>The engine (R package <a href="https://carpentries.github.io/sandpaper/" class="external-link">{sandpaper}</a>) to
+process the lesson content markdown to HTML</li>
+<li>The validator (R package <a href="https://carpentries.github.io/pegboard/" class="external-link">{pegboard}</a>) to parse
+the source markdown files and highlight common errors</li>
+<li>The renderer (R package <a href="https://github.com/carpentries/varnish/" class="external-link">{varnish}</a>) to
+generate the final HTML, CSS, and JavaScript styling elements for the
+lesson website</li>
+</ol><p>Details of how these tools work together are explained in the <a href="internals.html">Workbench Internals</a> documentation. In short,
+you can interact with the lesson source content and the Workbench tools
+to author and preview your lesson.</p>
+<p>Working examples of Workbench-powered lessons can be found as part of
+our Carpentries curriculum:</p>
+<ul><li>This documentation!</li>
+<li><a href="http://swcarpentry.github.io/shell-novice/" class="external-link">The Unix
+Shell</a></li>
+<li><a href="https://datacarpentry.org/genomics-r-intro/" class="external-link">Data Analysis
+and Visualization with R for Genomics</a></li>
+<li><a href="https://datacarpentry.org/image-processing" class="external-link">Image
+Processing with Python</a></li>
+<li><a href="https://librarycarpentry.org/lc-git/" class="external-link">Introduction to Git
+for Librarians</a></li>
+</ul><div id="features-of-the-the-carpentries-workbench" class="callout checklist">
+<div class="callout-square">
+<i class="callout-icon" data-feather="check-square"></i>
+</div>
+<span class="callout-header">Checklist</span>
+<div id="features-of-the-the-carpentries-workbench" class="callout-inner">
+<h3 class="callout-title">Features of the The Carpentries Workbench</h3>
+<div class="callout-content">
+<ul class="task-list"><li><label><input type="checkbox" checked>Automatic
+updates</label></li>
+<li><label><input type="checkbox" checked>Pandoc markdown
+syntax</label></li>
+<li><label><input type="checkbox" checked>Built entirely using
+R</label></li>
+<li><label><input type="checkbox" checked>Automatic rendering of
+code in R Markdown</label></li>
+<li><label><input type="checkbox" checked>Non-invasive package
+management with {renv}</label></li>
+<li><label><input type="checkbox" checked>Pull Request audits for
+rendered files</label></li>
+<li><label><input type="checkbox" checked>Compatible with
+RStudio</label></li>
+<li><label><input type="checkbox" checked>Containerised using
+Docker for reproducibility</label></li>
+</ul></div>
+</div>
+</div>
+<p>To get started using the Workbench, continue reading <a href="index.html#setup">below</a>!</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
@@ -291,23 +346,7 @@ any links that you are not going to use.
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
       </section><section id="setup"><section><h2 class="section-heading" id="id_101-install">Installation of the Workbench<a class="anchor" aria-label="anchor" href="#id_101-install"></a></h2>
-<hr class="half-width"><p>The Workbench lesson infrastructure is built on Git, the R language,
-and pandoc. It consists of four components:</p>
-<ol style="list-style-type: decimal"><li>The source content, i.e. the “lesson” (plain markdown or RMarkdown
-files organized into folders with a configuration yaml file)</li>
-<li>The engine (R package <a href="https://carpentries.github.io/sandpaper/" class="external-link">{sandpaper}</a>) to
-process the lesson content markdown to HTML</li>
-<li>The validator (R package <a href="https://carpentries.github.io/pegboard/" class="external-link">{pegboard}</a>) to parse
-the source markdown files and highlight common errors</li>
-<li>The renderer (R package <a href="https://github.com/carpentries/varnish/" class="external-link">{varnish}</a>) to
-generate the final HTML, CSS, and JavaScript styling elements for the
-lesson website</li>
-</ol><p>Details of how these tools work together are explained in the <a href="todo.html">TODO</a>. In short, you can interact with the lesson
-source content and the Workbench tools to author and preview your
-lesson.</p>
-<div class="section level3">
-<h3 id="what-installation-method-should-i-choose">What installation method should I choose?<a class="anchor" aria-label="anchor" href="#what-installation-method-should-i-choose"></a></h3>
-<p>We provide four mechanisms to interact with the Workbench:</p>
+<hr class="half-width"><p>We provide four mechanisms to interact with the Workbench:</p>
 <ul><li>Devcontainers (online or local) <strong>[recommended]</strong>
 <ul><li>We recommend using devcontainers as everything will be installed for
 you whether you are using an online or local environment, with minimal
@@ -343,8 +382,8 @@ to do!</strong></li>
 </ul></li>
 <li>GitHub (online)
 <ul><li>Moving your development completely online by using GitHub’s
-Codespaces or Dev environment is an excellent choice if you have fast
-internet and are comfortable with this process.</li>
+Codespaces or Dev environment is an excellent choice if you have a
+reliable internet connection and are comfortable with this process.</li>
 <li><strong>Be advised that this option may incur a cost depending on
 your GitHub account status!</strong></li>
 </ul></li>
@@ -363,7 +402,6 @@ using our templates.</p>
 <p>However, we still would recommend working through the <a href="#id_101-manual">local setup instructions</a> at least once as they
 can save you a lot of time during lesson development and debugging in
 future.</p>
-</div>
 </div>
 </div>
 </div>
@@ -1246,7 +1284,7 @@ every time you open your terminal:</p>
   Add this to ~/.Rprofile
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Open the <code>nano</code> text editor:</p>
 <div class="codewrapper sourceCode" id="cb36">
