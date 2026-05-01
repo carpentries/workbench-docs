@@ -49,9 +49,11 @@ episodes:
 # Information for Learners
 learners:
 - setup.md
-- internals.md
+- local_install.md
 - devcontainer.md
 - docker.md
+- github.md
+- internals.md
 - faq.md
 
 # Information for Instructors
