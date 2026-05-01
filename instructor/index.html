@@ -102,7 +102,7 @@
           <button class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             More <i data-feather="chevron-down"></i>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><hr><li><a class="dropdown-item" href="internals.html">Workbench Internals</a></li><li><a class="dropdown-item" href="devcontainer.html">Devcontainer Extras</a></li><li><a class="dropdown-item" href="docker.html">Docker Extras</a></li><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><hr><li><a class="dropdown-item" href="local_install.html">Local Installation</a></li><li><a class="dropdown-item" href="devcontainer.html">Devcontainers</a></li><li><a class="dropdown-item" href="docker.html">Docker</a></li><li><a class="dropdown-item" href="github.html">Using the Workbench with GitHub</a></li><li><a class="dropdown-item" href="internals.html">Workbench Internals</a></li><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li>
           </ul></li>
       </ul></div>
     <!--
@@ -228,7 +228,7 @@
                       <li>
                         <a href="../instructor/images.html">Extract All Images</a>
                       </li>
-                      <hr><li><a class="dropdown-item" href="internals.html">Workbench Internals</a></li><li><a class="dropdown-item" href="devcontainer.html">Devcontainer Extras</a></li><li><a class="dropdown-item" href="docker.html">Docker Extras</a></li><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li>
+                      <hr><li><a class="dropdown-item" href="local_install.html">Local Installation</a></li><li><a class="dropdown-item" href="devcontainer.html">Devcontainers</a></li><li><a class="dropdown-item" href="docker.html">Docker</a></li><li><a class="dropdown-item" href="github.html">Using the Workbench with GitHub</a></li><li><a class="dropdown-item" href="internals.html">Workbench Internals</a></li><li><a class="dropdown-item" href="faq.html">Workbench FAQs</a></li>
                     </ul></div>
                 </div>
               </div>
@@ -347,7 +347,9 @@ any links that you are not going to use.
       </p>
       </section><section id="setup"><section><h2 class="section-heading" id="id_101-install">Installation of the Workbench<a class="anchor" aria-label="anchor" href="#id_101-install"></a></h2>
 <hr class="half-width"><p>We provide four mechanisms to interact with the Workbench:</p>
-<ul><li>Devcontainers (online or local) <strong>[recommended]</strong>
+<ul><li>
+<a href="devcontainer.html">Devcontainers</a> (online or local)
+<strong>[recommended]</strong>
 <ul><li>We recommend using devcontainers as everything will be installed for
 you whether you are using an online or local environment, with minimal
 setup.</li>
@@ -357,21 +359,25 @@ setup.</li>
 work on, please use the manual installation route, or Docker if you are
 comfortable with it.</strong></li>
 </ul></li>
-<li>Docker (local)
+<li>
+<a href="docker.html">Docker</a> (local)
 <ul><li>The Docker option can be useful for those that already have
 experience with Docker and containers, and are happy to do some manual
 configuration or wish to have more flexibility.</li>
 <li><strong>Initial setup with docker is very straightfoward but can get
 complicated depending on your operating system!</strong></li>
 </ul></li>
-<li>Manual local installation from conda-forge with Pixi (local)
+<li>
+<a href="local_install.html#101-conda-pixi">Manual local
+installation from conda-forge with Pixi</a> (local)
 <ul><li>Installing all the requirements for development is one line and will
 create a fully reproducible environment.</li>
 <li><strong>Initial setup with conda packages from conda-forge and Pixi
 is very straightfoward and is operating system agnostic.</strong></li>
 </ul></li>
-<li>Manual local installation with operating system specific tools
-(local)
+<li>
+<a href="local_install.html#101-conda-conda">Manual local
+installation with operating system specific tools</a> (local)
 <ul><li>Installing all the requirements manually on your local operating
 system is a longer process, but can be useful if you want to learn how
 to get an environment set up and will teach you more about the Workbench
@@ -380,7 +386,8 @@ framework.</li>
 installing things manually is a great option and still relatively quick
 to do!</strong></li>
 </ul></li>
-<li>GitHub (online)
+<li>
+<a href="github.html">GitHub</a> (online)
 <ul><li>Moving your development completely online by using GitHub’s
 Codespaces or Dev environment is an excellent choice if you have a
 reliable internet connection and are comfortable with this process.</li>
@@ -397,977 +404,22 @@ your GitHub account status!</strong></li>
 these other options exist?</h3>
 <div class="callout-content">
 <p>You can use the Workbench completely within devcontainers, Docker, or
-with <a href="#id_101-conda-forge">Pixi locally</a>, or through GitHub
-using our templates.</p>
-<p>However, we still would recommend working through the <a href="#id_101-manual">local setup instructions</a> at least once as they
-can save you a lot of time during lesson development and debugging in
-future.</p>
+with <a href="local_install.html#101-conda-forge">Pixi locally</a>, or
+through GitHub using our templates.</p>
+<p>However, we still would recommend working through the <a href="local_install.html#101-manual">local setup instructions</a> at
+least once as they can save you a lot of time during lesson development
+and debugging in future.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="id_101-devcontainer">Devcontainers<a class="anchor" aria-label="anchor" href="#id_101-devcontainer"></a></h2>
-<hr class="half-width"><p>Devcontainers are a way of remotely or locally setting up a coding
-environment based on a preconfigured “blueprint”. This blueprint is used
-by Integrated Development Environments (IDEs) like VSCode, vscodium,
-IDEA, or Zed, to initiate and configure an environment for you. This can
-make it much quicker to get up and running with lesson development.</p>
-<p>To use devcontainers you need:</p>
-<ul><li>Docker: please read the <a href="#id_101-docker">Docker installation
-instructions</a> to install Docker Desktop or the Docker Engine for your
-operating system.</li>
-<li>An IDE that supports devcontainers: We recommend <a href="https://code.visualstudio.com/" class="external-link">VSCode</a> as it has the most
-complete and easy to set up devcontainer support. We acknowledge that
-VSCode is free but not completely open source.</li>
-</ul><p>Please note, if you are not comfortable with using Docker for the
-Workbench, we recommend going through the <a href="#id_101-manual">manual installation</a> steps below.</p>
-<div class="section level3">
-<h3 id="starting-up-the-devcontainer">Starting up the devcontainer<a class="anchor" aria-label="anchor" href="#starting-up-the-devcontainer"></a></h3>
-<p>Make sure Docker Desktop is running and that you are connected to the
-Internet.</p>
-<p>Open VSCode:</p>
-<ul><li>either, by double clicking the icon in your OS, going to
-<code>File</code>, <code>Open Folder...</code>, and navigating to a
-lesson folder</li>
-<li>or, open a terminal, navigate to a lesson folder and start VSCode by
-typing:</li>
-</ul><div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a>  <span class="bu">cd</span> ~/lessons/shell-novice</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a>  <span class="ex">code</span> .</span></code></pre>
-</div>
-<p>NB: Note the space between <code>code</code> and <code>.</code>!</p>
-<p>Once VSCode has opened the folder, after a short time, a pop-up
-should appear in the bottom right of the IDE saying
-<code>Folder contains a Devcontainer configuration file. Reopen folder to develop in a container</code>,
-with an option button to <code>Reopen in container</code>. Click this
-button and wait for VSCode to read the configuration file and setup the
-devcontainer environment.</p>
-<div id="troubleshooting" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="troubleshooting" class="callout-inner">
-<h3 class="callout-title">Troubleshooting</h3>
-<div class="callout-content">
-<p>If this pop-up does not appear, open the command menu in VSCode with
-the <kbd>F1</kbd> function key. Your cursor will appear in the command
-menu bar at the top of the window, prefixed with a <code>&gt;</code>
-symbol. Start typing <code>open folder</code> and select the
-<code>Dev Containers: Open Folder in Container...</code> option.</p>
-<p>Similarly if you have any issues with the container at any point, you
-can open the command menu with <kbd>F1</kbd>, start typing
-<code>rebuild</code>, and select the
-<code>Dev Containers: Rebuild and Reopen in Container...</code>. This
-should be used judiciously as it will often reinstall dependencies so
-can take a few minutes.</p>
-</div>
-</div>
-</div>
-<p>Various pop-ups will appear in the bottom right, showing progress.
-You can click on the <code>Show log</code> link in any of the popups
-that show it to see any logs of the setup process.</p>
-<p>The setup process can take a few minutes the first time you run it
-for a lesson. After the first time, it will be much quicker to start
-subsequent uses of the environment as the Docker image would be
-downloaded and stored for reuse.</p>
-<div id="lessons-with-a-lot-of-dependencies" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="lessons-with-a-lot-of-dependencies" class="callout-inner">
-<h3 class="callout-title">Lessons with a lot of dependencies</h3>
-<div class="callout-content">
-<p>For those R Markdown lessons that require a large number of R
-packages, this first start of the devcontainer can take quite a long
-time.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="running-the-workbench">Running the Workbench<a class="anchor" aria-label="anchor" href="#running-the-workbench"></a></h3>
-<p>Open a terminal in VSCode by going to the <code>Terminal</code> menu
-in the top menu bar and click <code>New Terminal</code>. An Ubuntu
-<code>bash</code> terminal window should appear in VSCode. This bash
-shell will be running <strong>inside</strong> the devcontainer, so
-should look something like:</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">rstudio@55a86b63e4ab:~/lesson$</span> </span></code></pre>
-</div>
-<p>Here, you can perform any shell or R actions as you would usually for
-lesson development.</p>
-<p>For more information, please check the full <a href="devcontainer.html">devcontainer documentation</a>.</p>
-<div id="what-if-i-dont-want-to-use-vscode" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="what-if-i-dont-want-to-use-vscode" class="callout-inner">
-<h3 class="callout-title">What if I don’t want to use VSCode?</h3>
-<div class="callout-content">
-<p>Sadly the devcontainer specification is only fully supported in a
-small number of IDEs. VSCode is recommended in our lessons and it
-natively supports devcontainers. Getting devcontainers to work in other
-fully open source IDEs like <code>vscodium</code> and <code>zed</code>
-are not as simple.</p>
-<p>Therefore we would recommend using VSCode as whilst it is partially
-open source, it is a reliable and very well supported piece of
-software.</p>
-<p>If this is not an option, then we recommend using the <a href="#id_101-docker">Docker image directly</a> as it comes bundled with
-RStudio which you can use to work on your lesson.</p>
-<p><strong>Sneaky extra:</strong> If you want to run RStudio Server from
-VSCode, in a terminal shell running in the VSCode devcontainer,
-type:</p>
-<div class="codewrapper sourceCode" id="cb3">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">~/start.sh</span></span></code></pre>
-</div>
-<p>This will start the RStudio Server within the devcontainer, and you
-can then access RStudio by opening a web browser and going to
-<code>http://localhost:8787</code>. Fancy!</p>
-</div>
-</div>
-</div>
-<div id="are-devcontainers-available-for-all-lessons" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="are-devcontainers-available-for-all-lessons" class="callout-inner">
-<h3 class="callout-title">Are devcontainers available for all
-lessons?</h3>
-<div class="callout-content">
-<p>Devcontainer blueprints are already provided by our <a href="https://github.com/carpentries/workbench-template-rmd" class="external-link">workbench-template-rmd</a>
-and <a href="https://github.com/carpentries/workbench-template-md" class="external-link">workbench-template-md</a>
-lesson templates, so when creating a new lesson you will get access to
-devcontainers automatically.</p>
-<p>However, not all Workbench-compatible lessons will have devcontainers
-enabled (a <code>.devcontainer</code> folder within the repository). To
-add devcontainer support to a pre-existing lesson, please follow the <a href="todo.html">devcontainer import instructions TODO</a></p>
-<p>We will also be rolling these out into existing lessons across our
-official lesson programs too!</p>
-</div>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="id_101-docker">Docker<a class="anchor" aria-label="anchor" href="#id_101-docker"></a></h2>
-<hr class="half-width"><p>The documentation below for each operating system goes through how to
-manually install the Workbench dependencies, requirements, and packages.
-To make this lengthy process shorter, the Workbench development team
-also provides Docker images of each release of the Workbench that are
-used for our GitHub workflows that build our core curriculum lessons.
-You can use these Docker images to run the Workbench on your local
-system too!</p>
-<p>Docker Desktop is available for all operating systems (Windows, Mac
-and Linux), so we recommend installing this.</p>
-<div class="section level3">
-<h3 id="docker-desktop">Docker Desktop<a class="anchor" aria-label="anchor" href="#docker-desktop"></a></h3>
-<p>Install Docker Desktop for <a href="https://docs.docker.com/desktop/" class="external-link">your operating system</a>.</p>
-<p>Once installed, choose one of the following ways to interact with the
-Docker system:</p>
-<ol style="list-style-type: decimal"><li>Via the Docker Desktop GUI app</li>
-<li>Via the command line terminal (bash on Linux/Windows WSL/git bash,
-terminal on the Mac)</li>
-</ol></div>
-<div class="section level3">
-<h3 id="running-the-workbench-docker-container">Running the Workbench Docker container<a class="anchor" aria-label="anchor" href="#running-the-workbench-docker-container"></a></h3>
-<p>After Docker Desktop/Docker Engine is set up, you can use the
-following command from the terminal (<code>git bash</code>, WSL, or
-MacOS Terminal app):</p>
-<div class="codewrapper sourceCode" id="cb4">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="co"># go home</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="bu">cd</span> ~</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a><span class="co"># make a `lessons` folder in your home directory and clone in a lesson</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a><span class="fu">mkdir</span> ~/lessons</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a><span class="bu">cd</span> ~/lessons</span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1" aria-label="code-block-4-7"></a><span class="fu">git</span> clone git@github.com:swcarpentry/shell-novice.git</span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1" aria-label="code-block-4-8"></a></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1" aria-label="code-block-4-9"></a><span class="co"># create a workbench-lessons named volume, and copy in the shell-novice content</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1" aria-label="code-block-4-10"></a><span class="ex">curl</span> <span class="at">-s</span> https://raw.githubusercontent.com/carpentries/workbench-docker/main/scripts/setup_named_volume.sh <span class="kw">|</span> <span class="fu">bash</span> <span class="at">-s</span> <span class="at">--</span> ~/lessons/shell-novice</span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1" aria-label="code-block-4-11"></a></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1" aria-label="code-block-4-12"></a><span class="co"># start the workbench container</span></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1" aria-label="code-block-4-13"></a><span class="ex">curl</span> <span class="at">-s</span> https://raw.githubusercontent.com/carpentries/workbench-docker/main/scripts/run_workbench.sh <span class="kw">|</span> <span class="fu">bash</span></span></code></pre>
-</div>
-<p>Or with <code>docker run</code> directly, if you want to control
-various docker options:</p>
-<div class="codewrapper sourceCode" id="cb5">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">docker</span> run <span class="at">--name</span> carpentries-workbench <span class="dt">\</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a>           <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1" aria-label="code-block-5-3"></a>           <span class="at">-v</span> ~/.ssh:/home/rstudio/.ssh:ro <span class="dt">\</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1" aria-label="code-block-5-4"></a>           <span class="at">-v</span> ~/.gitconfig:/home/rstudio/.gitconfig <span class="dt">\</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1" aria-label="code-block-5-5"></a>           <span class="at">-e</span> DISABLE_AUTH=true <span class="dt">\</span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1" aria-label="code-block-5-6"></a>           <span class="at">-d</span> carpentries/workbench-docker:latest</span></code></pre>
-</div>
-<p>In the Docker Desktop app, you should see an entry appear in the
-“Containers” tab with the name <code>carpentries-workbench</code>.</p>
-<p>You can now open a web browser and navigate to
-<code>http://localhost:8787</code> which will connect to the RStudio
-server running in the Docker container. You’re good to go! Please
-continue with the <a href="#install-test">Test Your Installation</a>
-instructions.</p>
-<p>More information and docker runtime options are described in the <a href="docker.html">Docker guide</a> and <a href="https://github.com/froggleston/workbench-dev/blob/frog-docker-update-1/docker.qmd" class="external-link">Workbench
-developer docker documentation</a>.</p>
-<p>Please note, if you are not comfortable with Docker or the Workbench,
-we recommend going through the <a href="#id_101-manual">manual
-installation steps</a> below.</p>
-</div>
-</section><section><h2 class="section-heading" id="id_101-conda-forge">Manual Local Installation from conda-forge<a class="anchor" aria-label="anchor" href="#id_101-conda-forge"></a></h2>
-<hr class="half-width"><div id="computing-platform-agnostic" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="computing-platform-agnostic" class="callout-inner">
-<h3 class="callout-title">Computing platform agnostic</h3>
-<div class="callout-content">
-<p>Installation from conda-forge is the same commands across all
-operating systems and computing architectures.</p>
-</div>
-</div>
-</div>
-<p>All of the Workbench tools, and their dependencies, are packaged and
-distributed as built binaries in the form of conda packages on <a href="https://conda-forge.org/" class="external-link">conda-forge</a> for Linux, macOS, and
-Windows. You can setup an environment for lesson development that
-includes all dependencies (including R) with the following.</p>
-<div class="tabs">
-<nav><div id="nav-tab-1" class="nav nav-tabs" role="tablist">
-<button class="nav-link active" id="nav-tab-1-WithPixi" name="WithPixi" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-1-WithPixi" type="button" role="tab" aria-controls="nav-tabpanel-1-WithPixi" aria-selected="true">
-  <h3 class="tab-header" id="nav-tab-heading-1-WithPixi">
-  With Pixi
-  </h3>
-</button>
-<button class="nav-link" id="nav-tab-1-WithConda" name="WithConda" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-1-WithConda" type="button" role="tab" aria-controls="nav-tabpanel-1-WithConda" aria-selected="false">
-  <h3 class="tab-header" id="nav-tab-heading-1-WithConda">
-  With Conda
-  </h3>
-</button>
-</div>
-</nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-WithPixi" class="tab-pane show active" aria-labelledby="nav-tab-1-WithPixi" role="tabpanel">
-<p><a href="https://pixi.prefix.dev/" class="external-link">Pixi</a> environments
-(recommended) are fully reproducible by default. From the project
-directory, initialize a Pixi workspace</p>
-<div class="codewrapper sourceCode" id="cb6">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">pixi</span> init</span></code></pre>
-</div>
-<p>and then add Git and the Workbench tool packages
-(<code>r-pegboard</code> is a dependency of
-<code>r-sandpaper</code>)</p>
-<div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">pixi</span> add git r-varnish r-sandpaper</span></code></pre>
-</div>
-<p>You can optionally activate a shell with the environment loaded
-with</p>
-<div class="codewrapper sourceCode" id="cb8">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">pixi</span> shell</span></code></pre>
-</div>
-<p>or execute all commands from within the environment with</p>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">pixi</span> run <span class="op">&lt;</span>commands<span class="op">&gt;</span></span></code></pre>
-</div>
-</div>
-<div id="nav-tabpanel-1-WithConda" class="tab-pane" aria-labelledby="nav-tab-1-WithConda" role="tabpanel">
-<p>Create a <a href="https://docs.conda.io/" class="external-link">conda</a> environment and
-install Git and The Workbench tool packages (<code>r-pegboard</code> is
-a dependency of <code>r-sandpaper</code>) from only the
-<code>conda-forge</code> channel</p>
-<div class="codewrapper sourceCode" id="cb10">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">conda</span> create <span class="at">--name</span> workbench</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="ex">conda</span> config <span class="at">--name</span> workbench <span class="at">--add</span> channels conda-forge</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a><span class="ex">conda</span> config <span class="at">--name</span> workbench <span class="at">--remove</span> channels defaults</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1" aria-label="code-block-10-4"></a><span class="ex">conda</span> install <span class="at">--name</span> workbench git r-varnish r-sandpaper</span></code></pre>
-</div>
-<p>and then activate the conda environment</p>
-<div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">conda</span> activate workbench</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="test-your-installation">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation"></a></h3>
-<p>To validate that you have all of the required tools installed in your
-environment</p>
-<div class="tabs">
-<nav><div id="nav-tab-2" class="nav nav-tabs" role="tablist">
-<button class="nav-link active" id="nav-tab-2-WithPixi" name="WithPixi" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-2-WithPixi" type="button" role="tab" aria-controls="nav-tabpanel-2-WithPixi" aria-selected="true">
-  <h3 class="tab-header" id="nav-tab-heading-2-WithPixi">
-  With Pixi
-  </h3>
-</button>
-<button class="nav-link" id="nav-tab-2-WithConda" name="WithConda" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-2-WithConda" type="button" role="tab" aria-controls="nav-tabpanel-2-WithConda" aria-selected="false">
-  <h3 class="tab-header" id="nav-tab-heading-2-WithConda">
-  With Conda
-  </h3>
-</button>
-</div>
-</nav><div id="nav-tabContent-2" class="tab-content">
-<div id="nav-tabpanel-2-WithPixi" class="tab-pane show active" aria-labelledby="nav-tab-2-WithPixi" role="tabpanel">
-<p>Run from the command line in the project directory</p>
-<div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">pixi</span> list</span></code></pre>
-</div>
-</div>
-<div id="nav-tabpanel-2-WithConda" class="tab-pane" aria-labelledby="nav-tab-2-WithConda" role="tabpanel">
-<p>Run from the command line</p>
-<div class="codewrapper sourceCode" id="cb13">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">conda</span> list <span class="at">--name</span> workbench</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<p>and verify that <code>git</code>, <code>pandoc</code>,
-<code>r-pegboard</code>, <code>r-sandpaper</code>, <code>r-tinkr</code>,
-and <code>r-varnish</code> are listed.</p>
-</div>
-</section><section><h2 class="section-heading" id="id_101-manual">Manual Local Installation<a class="anchor" aria-label="anchor" href="#id_101-manual"></a></h2>
-<hr class="half-width"><div class="section level3">
-<h3 id="id_101-required">Required Software<a class="anchor" aria-label="anchor" href="#id_101-required"></a></h3>
-<p>This setup document will take you through the process of installing
-or upgrading the required software on your local computer or server.</p>
-<ol style="list-style-type: decimal"><li><p><strong><a href="https://git-scm.com/" class="external-link">Git</a></strong> (≥ 2.28
-recommended)</p></li>
-<li><p><strong><a href="https://cran.rstudio.org/" class="external-link">R</a></strong> (≥
-4.x)</p></li>
-<li><p><strong><a href="https://pandoc.org/" class="external-link">pandoc</a></strong> (≥
-3.x)</p></li>
-<li>
-<p>The lesson infrastructure R packages</p>
-<ol style="list-style-type: lower-roman"><li>
-<strong><a href="https://carpentries.github.io/sandpaper/" class="external-link">{sandpaper}</a></strong>
-(development version)</li>
-<li>
-<strong><a href="https://github.com/carpentries/varnish/" class="external-link">{varnish}</a></strong>
-(development version)</li>
-<li>
-<strong><a href="https://carpentries.github.io/pegboard/" class="external-link">{pegboard}</a></strong>
-(development version)</li>
-<li>
-<strong><a href="https://docs.ropensci.org/tinkr/" class="external-link">{tinkr}</a></strong> (markdown
-parser required by {pegboard})</li>
-</ol><p>Once you have Git, R, and Pandoc installed, these packages can be
-installed and updated via:</p>
-<div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"sandpaper"</span>, <span class="st">"varnish"</span>, <span class="st">"pegboard"</span><span class="op">)</span>,</span>
-<span>  repos <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"https://carpentries.r-universe.dev/"</span>, <span class="fu">getOption</span><span class="op">(</span><span class="st">"repos"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-</div>
-</li>
-</ol></div>
-<div class="section level3">
-<h3 id="id_101-recommend">Recommended Software<a class="anchor" aria-label="anchor" href="#id_101-recommend"></a></h3>
-<p>If you are using R or pandoc for the first time, we recommend using
-<a href="https://posit.co/" class="external-link">the RStudio IDE</a> for the following
-reasons:</p>
-<ol style="list-style-type: decimal"><li>It comes with <a href="https://pandoc.org/" class="external-link">pandoc</a>
-pre-installed.</li>
-<li>It works consistently across all major platforms.</li>
-<li>It provides a dedicated <code>bash</code> terminal so you can easily
-switch between R and Git operations.</li>
-<li>There are convenient keyboard shortcuts to preview lessons.</li>
-<li>On Windows, it will automatically detect your R installation without
-you needing to edit your <code>PATH</code>.</li>
-</ol><p>If you do not want to use RStudio, that’s perfectly okay and
-expected! We want to you to be able work with the new template with the
-tools with which you’re most familiar. If you feel comfortable using a
-different tool (e.g. the command line or VSCode), then you should
-install R and pandoc separately and make sure that they are in your
-PATH.</p>
-<p>If you already have software installed and are curious if you should
-update it to a newer version, the answer is almost always, yes. Newer
-versions will often contain important bug fixes that are important to
-the security of your computer.</p>
-<p>Jump to the installation instructions for your system: <a href="#windows">Windows</a>, <a href="#mac">MacOS</a>, or <a href="#linux">Linux</a>.</p>
-</div>
-</section><section><h2 class="section-heading" id="windows">Installing on Windows<a class="anchor" aria-label="anchor" href="#windows"></a></h2>
-<hr class="half-width"><div class="section level3">
-<h3 id="git">Git<a class="anchor" aria-label="anchor" href="#git"></a></h3>
-<p>We recommend installing git via the <a href="https://gitforwindows.org/" class="external-link">Git for Windows installer</a>. The
-installer is going to ask a lot of questions, so we recommend <a href="https://carpentries.github.io/workshop-template/#the-bash-shell" class="external-link">following
-The Carpentries instructions for workshop participants</a>.</p>
-<div class="section level4">
-<h4 id="test-your-installation-1">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-1"></a></h4>
-<p>To test that you have git installed, open your command line by
-pressing <kbd>Windows</kbd>+<kbd>R</kbd> and type <code>cmd</code> to
-bring up the command prompt. From there, you can type
-<code>git --version</code> to see the version of your git installation.
-You might see something like this:</p>
-<div class="codewrapper sourceCode" id="cb15">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>git version 2.31.1.windows.1</code></pre>
-</div>
-<p>If, however, you see this error, then you should try to install git
-again.</p>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>'git' is not recognised as an internal or external command, operable program or batch file.</code></pre>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="r">R<a class="anchor" aria-label="anchor" href="#r"></a></h3>
-<p>Install the <a href="https://cran.r-project.org/bin/windows/base/" class="external-link">latest version of R
-for Windows</a>. There is also a video tutorial up on <a href="https://carpentries.github.io/workshop-template/#r-1" class="external-link">The
-Carpentries instructions for workshop participants</a> that can be quite
-helpful for parsing the steps of installing R on Windows.</p>
-<div id="winpath" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="winpath" class="callout-inner">
-<h3 class="callout-title">Optional: Want to add R to your PATH?</h3>
-<div class="callout-content">
-<p>As we mention above, <a href="#recommend">we recommend using RStudio
-for your lesson</a>, but if you want to be able to integrate the lesson
-infrastructure into your own preferred workflow, you need to have R on
-your path. The catch is that R for Windows does not automatically set
-your <code>PATH</code> variable.</p>
-<p><a href="https://www.maketecheasier.com/what-is-the-windows-path/" class="external-link">Here are
-some instructions on setting up your PATH on Windows using both the GUI
-and CLI</a>. Note that R will normally install at something like
-<code>C:\Program Files\R\R-4.4.0\bin\x64</code>, but if you are not an
-administrator on your device, it will install R in your
-<code>My Documents</code> folder.</p>
-<p>To verify that R is installed in your <code>PATH</code>, open your
-command line by pressing <kbd>Windows</kbd>+<kbd>R</kbd> and type
-<code>cmd</code> to bring up the command prompt. From there, you can
-type <code>R --version</code> at the prompt. Your output should be
-similar to below, with a version ≥ 4.x.</p>
-<div class="codewrapper sourceCode" id="cb18">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>R version 4.1.0 (2021-05-18) -- "Camp Pontanezen"
-Copyright (C) 2021 The R Foundation for Statistical Computing
-Platform: x86_64-mingw32/x64 (64-bit)
-
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under the terms of the
-GNU General Public License versions 2 or 3.
-For more information about these matters see
-https://www.gnu.org/licenses/.</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="pandoc">pandoc<a class="anchor" aria-label="anchor" href="#pandoc"></a></h3>
-<p>There are two ways to install pandoc:</p>
-<div class="section level4">
-<h4 id="via-rstudio-recommended">Via RStudio (recommended)<a class="anchor" aria-label="anchor" href="#via-rstudio-recommended"></a></h4>
-<p>Since pandoc comes bundled with RStudio, you can install it by
-installing the latest version of RStudio. You can <a href="https://posit.co/" class="external-link">download the installer from the RStudio
-website</a>.</p>
-</div>
-<div class="section level4">
-<h4 id="via-the-pandoc-website">Via the pandoc website<a class="anchor" aria-label="anchor" href="#via-the-pandoc-website"></a></h4>
-<p>If you are comfortable adding R to your windows PATH (see <a href="#winpath">previous section</a>), then you can install pandoc by
-using the download provided on its website at <a href="https://pandoc.org/installing.html" class="external-link uri">https://pandoc.org/installing.html</a></p>
-</div>
-<div class="section level4">
-<h4 id="test-your-installation-2">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-2"></a></h4>
-<p>We will wait to test the pandoc installation after we have installed
-the infrastructure packages, to make sure it’s discoverable by R.</p>
-</div>
-</div>
-<div class="section level3">
-<h3 id="infrastructure-r-packages">Infrastructure R packages<a class="anchor" aria-label="anchor" href="#infrastructure-r-packages"></a></h3>
-<p>To install the R packages, you will need to <strong>open
-RStudio</strong> (or start R from the command line if you did not
-install RStudio) and enter the following lines into the console.</p>
-<div class="codewrapper sourceCode" id="cb20">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># register the repositories for The Carpentries and CRAN</span></span>
-<span><span class="fu">options</span><span class="op">(</span>repos <span class="op">=</span> <span class="fu">c</span><span class="op">(</span></span>
-<span>  carpentries <span class="op">=</span> <span class="st">"https://carpentries.r-universe.dev/"</span>,</span>
-<span>  CRAN <span class="op">=</span> <span class="st">"https://cran.rstudio.com/"</span></span>
-<span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Install the template packages to your R library</span></span>
-<span><span class="fu">install.packages</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"sandpaper"</span>, <span class="st">"varnish"</span>, <span class="st">"pegboard"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="mac">Installing on MacOS<a class="anchor" aria-label="anchor" href="#mac"></a></h2>
-<hr class="half-width"><div class="section level3">
-<h3 id="git-1">Git<a class="anchor" aria-label="anchor" href="#git-1"></a></h3>
-<p>You should have git pre-installed on your macOS, but it is likely
-that this is an old version. We recommend installing <a href="https://git-scm.com/downloads/mac" class="external-link">The latest version of Git for
-MacOS</a>. For a video guide, you can look at the <a href="https://carpentries.github.io/workshop-template/#git-1" class="external-link">instructions
-for workshop participants</a>.</p>
-<div class="section level4">
-<h4 id="test-your-installation-3">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-3"></a></h4>
-<p>To test your installation of Git and confirm it works, open
-<strong>Terminal.app</strong> and type the following:</p>
-<div class="codewrapper sourceCode" id="cb21">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>git version 2.31.0</code></pre>
-</div>
-<p>If you have the default version of git, you might see this output,
-and that’s okay for the purposes of this template.</p>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>git version 2.24.3 (Apple Git-128)</code></pre>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="r-1">R<a class="anchor" aria-label="anchor" href="#r-1"></a></h3>
-<div id="homebrew-not-recommended" class="callout prereq">
-<div class="callout-square">
-<i class="callout-icon" data-feather="check"></i>
-</div>
-<span class="callout-header">Prerequisite</span>
-<div id="homebrew-not-recommended" class="callout-inner">
-<h3 class="callout-title">Homebrew Not Recommended</h3>
-<div class="callout-content">
-<p>Installing R via Homebrew can allow you to customise your
-installation, but you lose the advantage of having readily available
-package binaries. Moreover, if you do not have the required C libraries
-(e.g. <code>libxslt</code>) installed, then the installation of some
-packages will fail. So, unless you are prepared for this, <strong>please
-do not use Homebrew to install R</strong>.</p>
-</div>
-</div>
-</div>
-<p>You can install the <a href="https://cran.rstudio.org/" class="external-link">latest R
-release</a> for MacOS from <a href="https://cran.r-project.org/bin/macosx" class="external-link uri">https://cran.r-project.org/bin/macosx</a>. There is also a
-video tutorial up on <a href="https://carpentries.github.io/workshop-template/#rstats-macos" class="external-link">The
-Carpentries instructions for workshop participants</a> that can be quite
-helpful for parsing the steps of installing R on MacOS.</p>
-<div class="section level4">
-<h4 id="test-your-installation-4">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-4"></a></h4>
-<p>You can test your installation of R by opening
-<strong>Terminal.app</strong> and typing <code>R --version</code> into
-the prompt. Your output should be similar to below, with a version ≥
-4.x:</p>
-<div class="codewrapper sourceCode" id="cb24">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>R version 4.1.0 (2021-05-18) -- "Camp Pontanezen"
-Copyright (C) 2021 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin17.0 (64-bit)
-
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under the terms of the
-GNU General Public License versions 2 or 3.
-For more information about these matters see
-https://www.gnu.org/licenses/.</code></pre>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="pandoc-1">pandoc<a class="anchor" aria-label="anchor" href="#pandoc-1"></a></h3>
-<p>There are two ways to install pandoc:</p>
-<div class="section level4">
-<h4 id="via-rstudio-recommended-1">Via RStudio (recommended)<a class="anchor" aria-label="anchor" href="#via-rstudio-recommended-1"></a></h4>
-<p>Since pandoc comes bundled with RStudio, you can install it by
-installing the latest version of RStudio. You can <a href="https://posit.co/" class="external-link">download the installer from the RStudio
-website</a>. RStudio will be a <code>*.dmg</code> (disk image) that you
-will double click to open a window that will look something like
-this:</p>
-<figure><img src="../fig/rstudio-mac-install.png" alt="Installation window for RStudio on mac showing two items on a plain background: the Applications folder on the left and the RStudio icon on the right." class="figure mx-auto d-block"></figure><p>You should <em>drag the RStudio icon to the left,
-<strong>into</strong> the Applications folder</em> to install RStudio on
-your computer.</p>
-</div>
-<div class="section level4">
-<h4 id="via-the-pandoc-website-1">Via the pandoc website<a class="anchor" aria-label="anchor" href="#via-the-pandoc-website-1"></a></h4>
-<p>If are more comfortable using R from the command line, then you can
-<a href="https://pandoc.org/installing.html" class="external-link">install pandoc</a> by
-clicking the “Download the latest installer for macOS” button. This will
-save a file called <code>pandoc-X.XX-macOS.pkg</code> installer to your
-computer. Open the installer and follow the instructions to install
-pandoc on your computer.</p>
-</div>
-<div class="section level4">
-<h4 id="test-your-installation-5">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-5"></a></h4>
-<p>We will wait to test the pandoc installation after we have installed
-the infrastructure packages, to make sure it’s discoverable by R.</p>
-</div>
-</div>
-<div class="section level3">
-<h3 id="infrastructure-r-packages-1">Infrastructure R packages<a class="anchor" aria-label="anchor" href="#infrastructure-r-packages-1"></a></h3>
-<p>To install the R packages, you will need to <strong>open
-RStudio</strong> (or start R from the command line if you did not
-install RStudio) and enter the following lines into the console.</p>
-<div class="codewrapper sourceCode" id="cb26">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># register the repositories for The Carpentries and CRAN</span></span>
-<span><span class="fu">options</span><span class="op">(</span>repos <span class="op">=</span> <span class="fu">c</span><span class="op">(</span></span>
-<span>  carpentries <span class="op">=</span> <span class="st">"https://carpentries.r-universe.dev/"</span>,</span>
-<span>  CRAN <span class="op">=</span> <span class="st">"https://cran.rstudio.com/"</span></span>
-<span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Install the template packages to your R library</span></span>
-<span><span class="fu">install.packages</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"sandpaper"</span>, <span class="st">"varnish"</span>, <span class="st">"pegboard"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="linux">Installing on Linux<a class="anchor" aria-label="anchor" href="#linux"></a></h2>
-<hr class="half-width"><p>Instructions for installing on Linux are nuanced due to the variety
-and availability of libraries and dependencies for each distribution,
-e.g. Ubuntu is Debian based whereas Fedora is Red Hat based. These
-instructions will use Ubuntu as the preferred distribution. The default
-<code>apt</code> repository is often out of date, so you will need to
-use a <a href="https://itsfoss.com/ppa-guide/" class="external-link">Personal Package Archive
-aka PPA</a> to install the latest version of a particular software,
-which will be included in these instructions.</p>
-<div class="section level3">
-<h3 id="git-2">Git<a class="anchor" aria-label="anchor" href="#git-2"></a></h3>
-<p>Many distributions include git by default, but it is often outdated.
-It is useful to try to update in case a newer version is available:</p>
-<div class="codewrapper sourceCode" id="cb27">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="fu">sudo</span> add-apt-repository ppa:git-core/ppa</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1" aria-label="code-block-27-3"></a><span class="fu">sudo</span> apt install git</span></code></pre>
-</div>
-<div class="section level4">
-<h4 id="test-your-installation-6">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-6"></a></h4>
-<p>Test your git installation by opening the terminal and running:</p>
-<div class="codewrapper sourceCode" id="cb28">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1" aria-label="code-block-28-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>git version 2.31.1</code></pre>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="r-2">R<a class="anchor" aria-label="anchor" href="#r-2"></a></h3>
-<p>To install R, you can visit <a href="https://cran.r-project.org/bin/linux/" class="external-link">CRAN’s Linux page</a> to
-check if your platform is supported. Detailed instructions exist <a href="https://cran.r-project.org/bin/linux/ubuntu/" class="external-link">for Ubuntu</a>. Here
-are the commands to register the PPA on your machine and then install
-R:</p>
-<div class="codewrapper sourceCode" id="cb30">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" tabindex="-1" aria-label="code-block-30-1"></a><span class="co"># update indices</span></span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1" aria-label="code-block-30-2"></a><span class="fu">sudo</span> apt update <span class="at">-qq</span></span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1" aria-label="code-block-30-3"></a><span class="co"># install two helper packages we need</span></span>
-<span id="cb30-4"><a href="#cb30-4" tabindex="-1" aria-label="code-block-30-4"></a><span class="fu">sudo</span> apt install <span class="at">--no-install-recommends</span> software-properties-common dirmngr</span>
-<span id="cb30-5"><a href="#cb30-5" tabindex="-1" aria-label="code-block-30-5"></a><span class="co"># import the signing key (by Michael Rutter) for these repo</span></span>
-<span id="cb30-6"><a href="#cb30-6" tabindex="-1" aria-label="code-block-30-6"></a><span class="fu">sudo</span> apt-key adv <span class="at">--keyserver</span> keyserver.ubuntu.com <span class="at">--recv-keys</span> E298A3A825C0D65DFD57CBB651716619E084DAB9</span>
-<span id="cb30-7"><a href="#cb30-7" tabindex="-1" aria-label="code-block-30-7"></a><span class="co"># add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed</span></span>
-<span id="cb30-8"><a href="#cb30-8" tabindex="-1" aria-label="code-block-30-8"></a><span class="fu">sudo</span> add-apt-repository <span class="st">"deb https://cloud.r-project.org/bin/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> <span class="at">-cs</span><span class="va">)</span><span class="st">-cran40/"</span></span>
-<span id="cb30-9"><a href="#cb30-9" tabindex="-1" aria-label="code-block-30-9"></a></span>
-<span id="cb30-10"><a href="#cb30-10" tabindex="-1" aria-label="code-block-30-10"></a><span class="co"># Install R</span></span>
-<span id="cb30-11"><a href="#cb30-11" tabindex="-1" aria-label="code-block-30-11"></a><span class="fu">sudo</span> apt install <span class="at">--no-install-recommends</span> r-base</span></code></pre>
-</div>
-<div class="section level4">
-<h4 id="test-your-installation-7">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-7"></a></h4>
-<p>Test your R installation by opening your terminal and running
-<code>R --version</code> into the prompt. Your output should be similar
-to below, with a version ≥ 4.x:</p>
-<div class="codewrapper sourceCode" id="cb31">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1" aria-label="code-block-31-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>R version 4.1.0 (2021-05-18) -- "Camp Pontanezen"
-Copyright (C) 2021 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu (64-bit)
-
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under the terms of the
-GNU General Public License versions 2 or 3.
-For more information about these matters see
-https://www.gnu.org/licenses/.
-</code></pre>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="pandoc-2">pandoc<a class="anchor" aria-label="anchor" href="#pandoc-2"></a></h3>
-<p>There are two ways to install pandoc:</p>
-<div class="section level4">
-<h4 id="via-rstudio-recommended-2">Via RStudio (recommended)<a class="anchor" aria-label="anchor" href="#via-rstudio-recommended-2"></a></h4>
-<p>Pandoc comes bundled with RStudio. You can <a href="https://posit.co/" class="external-link">download the installer from the RStudio
-website</a>. When installing RStudio for Linux, your distribution may
-not be shown on the landing page. If your Ubuntu version is not listed,
-check the <a href="https://docs.posit.co/previous-versions/rstudio.html" class="external-link">RStudio
-Previous Versions</a> page to see if there are builds available.</p>
-<div id="optional-verify-the-install" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="optional-verify-the-install" class="callout-inner">
-<h3 class="callout-title">Optional: verify the install</h3>
-<div class="callout-content">
-<p>You can optionally verify the download before installing by following
-the instructions at <a href="https://posit.co/code-signing/" class="external-link uri">https://posit.co/code-signing/</a>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="section level4">
-<h4 id="via-the-pandoc-website-2">Via the pandoc website<a class="anchor" aria-label="anchor" href="#via-the-pandoc-website-2"></a></h4>
-<p>If you are more comfortable using R from the command line, then you
-can install pandoc from the <a href="https://pandoc.org/installing.html" class="external-link">releases page</a>. From the
-list on the GitHub page, for Ubuntu, choose the appropriate
-<code>.deb</code> file for your chip architecture (i.e. AMD64 or
-ARM64).</p>
-</div>
-<div class="section level4">
-<h4 id="test-your-installation-8">Test your installation<a class="anchor" aria-label="anchor" href="#test-your-installation-8"></a></h4>
-<p>We will wait to test the pandoc installation after we have installed
-the infrastructure packages, to make sure it’s discoverable by R.</p>
-</div>
-</div>
-<div class="section level3">
-<h3 id="infrastructure-r-packages-2">Infrastructure R packages<a class="anchor" aria-label="anchor" href="#infrastructure-r-packages-2"></a></h3>
-<p>Linux packages normally need to be compiled into binaries by your
-system, which can take a long time the first time it happens. RStudio
-provides a package manager that pre-compiles Linux binaries. Note that
-you do not have to be using RStudio to take advantage of these binaries.
-The one we are using is set up for the current Long Term Support (LTS)
-version of Ubuntu - 24.04 (noble).</p>
-<div id="dependencies-of-dependencies" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="dependencies-of-dependencies" class="callout-inner">
-<h3 class="callout-title">Dependencies of Dependencies</h3>
-<div class="callout-content">
-<p>If you are not used to installing software on Linux, it can be
-frustrating sometimes because things can go wrong and it’s not always
-immediately clear why. The same is true for some R packages with
-compiled code.</p>
-<p>Some packages require underlying C libraries (e.g. the xml2 library),
-which are catalogued for Ubuntu in <a href="https://carpentries.r-universe.dev/ui#builds" class="external-link">The Carpentries R
-Universe</a> and <a href="https://carpentries.r-universe.dev/apis" class="external-link">available via the
-API</a>. To produce a list (you may need to
-<code>sudo apt install jq</code> if it is not already on your
-system):</p>
-<div class="codewrapper sourceCode" id="cb33">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1" aria-label="code-block-33-1"></a><span class="ex">curl</span> https://carpentries.r-universe.dev/stats/sysdeps <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.headers[0] | select(. != null)'</span></span></code></pre>
-</div>
-<p>This list can be sent to <code>apt install</code> to install
-everything:</p>
-<div class="codewrapper sourceCode" id="cb34">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" tabindex="-1" aria-label="code-block-34-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> <span class="dt">\</span></span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1" aria-label="code-block-34-2"></a>  <span class="va">$(</span><span class="ex">curl</span> https://carpentries.r-universe.dev/stats/sysdeps <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.headers[0] | select(. != null)'</span><span class="va">)</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="dt">\</span></span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1" aria-label="code-block-34-3"></a>  <span class="kw">||</span> <span class="bu">echo</span> <span class="st">"Not on Ubuntu"</span></span></code></pre>
-</div>
-<p>After you have these installed, you will be able to install the
-required R packages without error.</p>
-</div>
-</div>
-</div>
-<div id="what-if-i-have-a-different-version-of-linux" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="what-if-i-have-a-different-version-of-linux" class="callout-inner">
-<h3 class="callout-title">What if I have a different version of
-Linux?</h3>
-<div class="callout-content">
-<p>For the dependencies above, you can browse the <a href="https://github.com/rstudio/r-system-requirements" class="external-link">rstudio/r-system-requirements
-repository</a> to find the correct formulation for your computer.</p>
-<p>In addition, you should check <a href="https://packagemanager.posit.co/__docs__/admin/serving-binaries/#supported-operating-systems" class="external-link">the
-supported operating systems for the Posit Package Manager</a> to see if
-you will benefit from pre-built binaries.</p>
-</div>
-</div>
-</div>
-<p>To install the R packages, you will need to <strong>open
-RStudio</strong> (or start R from the command line if you did not
-install RStudio) and enter the following lines into the console:</p>
-<div class="codewrapper sourceCode" id="cb35">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Set the default HTTP user agent to get pre-built binary packages</span></span>
-<span><span class="va">RV</span> <span class="op">&lt;-</span> <span class="fu">getRversion</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">OS</span> <span class="op">&lt;-</span> <span class="fu">paste</span><span class="op">(</span><span class="va">RV</span>, <span class="va">R.version</span><span class="op">[</span><span class="st">"platform"</span><span class="op">]</span>, <span class="va">R.version</span><span class="op">[</span><span class="st">"arch"</span><span class="op">]</span>, <span class="va">R.version</span><span class="op">[</span><span class="st">"os"</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">codename</span> <span class="op">&lt;-</span> <span class="fu">sub</span><span class="op">(</span><span class="st">"Codename.\t"</span>, <span class="st">""</span>, <span class="fu">system2</span><span class="op">(</span><span class="st">"lsb_release"</span>, <span class="st">"-c"</span>, stdout <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">options</span><span class="op">(</span>HTTPUserAgent <span class="op">=</span> <span class="fu">sprintf</span><span class="op">(</span><span class="st">"R/%s R (%s)"</span>, <span class="va">RV</span>, <span class="va">OS</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># register the repositories for The Carpentries and CRAN</span></span>
-<span><span class="fu">options</span><span class="op">(</span>repos <span class="op">=</span> <span class="fu">c</span><span class="op">(</span></span>
-<span>  carpentries <span class="op">=</span> <span class="st">"https://carpentries.r-universe.dev/"</span>,</span>
-<span>  CRAN <span class="op">=</span> <span class="fu">paste0</span><span class="op">(</span><span class="st">"https://packagemanager.posit.co/all/__linux__/"</span>, <span class="va">codename</span>, <span class="st">"/latest"</span><span class="op">)</span></span>
-<span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Install the template packages to your R library</span></span>
-<span><span class="fu">install.packages</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"sandpaper"</span>, <span class="st">"varnish"</span>, <span class="st">"pegboard"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-</div>
-<div id="saving-these-settings-for-later" class="callout discussion">
-<div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
-</div>
-<span class="callout-header">Discussion</span>
-<div id="saving-these-settings-for-later" class="callout-inner">
-<h3 class="callout-title">Saving these settings for later</h3>
-<div class="callout-content">
-<p>To not have to run this block of code every time you want to update,
-add the following code into your <code>~/.Rprofile</code> to run it
-every time you open your terminal:</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Add this to ~/.Rprofile
-  </h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
-<div class="accordion-body">
-<p>Open the <code>nano</code> text editor:</p>
-<div class="codewrapper sourceCode" id="cb36">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1" aria-label="code-block-36-1"></a><span class="fu">nano</span> ~/.Rprofile</span></code></pre>
-</div>
-<p>And copy and paste the following code at the bottom of the file. Once
-you have done so, type <kbd>Ctrl</kbd>+<kbd>X</kbd> to save and
-exit.</p>
-<div class="codewrapper sourceCode" id="cb37">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">local</span><span class="op">(</span><span class="op">{</span></span>
-<span>  <span class="co"># Set the default HTTP user agent to get pre-built binary packages</span></span>
-<span>  <span class="va">RV</span> <span class="op">&lt;-</span> <span class="fu">getRversion</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">OS</span> <span class="op">&lt;-</span> <span class="fu">paste</span><span class="op">(</span><span class="va">RV</span>, <span class="va">R.version</span><span class="op">[</span><span class="st">"platform"</span><span class="op">]</span>, <span class="va">R.version</span><span class="op">[</span><span class="st">"arch"</span><span class="op">]</span>, <span class="va">R.version</span><span class="op">[</span><span class="st">"os"</span><span class="op">]</span><span class="op">)</span></span>
-<span>  <span class="va">codename</span> <span class="op">&lt;-</span> <span class="fu">sub</span><span class="op">(</span><span class="st">"Codename.\t"</span>, <span class="st">""</span>, <span class="fu">system2</span><span class="op">(</span><span class="st">"lsb_release"</span>, <span class="st">"-c"</span>, stdout <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="fu">options</span><span class="op">(</span>HTTPUserAgent <span class="op">=</span> <span class="fu">sprintf</span><span class="op">(</span><span class="st">"R/%s R (%s)"</span>, <span class="va">RV</span>, <span class="va">OS</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="co"># register the repositories for The Carpentries and CRAN</span></span>
-<span>  <span class="fu">options</span><span class="op">(</span>repos <span class="op">=</span> <span class="fu">c</span><span class="op">(</span></span>
-<span>    carpentries <span class="op">=</span> <span class="st">"https://carpentries.r-universe.dev/"</span>,</span>
-<span>    CRAN <span class="op">=</span> <span class="fu">paste0</span><span class="op">(</span><span class="st">"https://packagemanager.posit.co/all/__linux__/"</span>, <span class="va">codename</span>, <span class="st">"/latest"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="what-if-i-get-errors-installing-packages" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="what-if-i-get-errors-installing-packages" class="callout-inner">
-<h3 class="callout-title">What if I get errors installing packages?</h3>
-<div class="callout-content">
-<p>If you run into errors (non-zero exit status), it probably means that
-you were missing a C library dependency that needs to be installed via
-your package manager (i.e. apt). To resolve these issues, scroll back in
-the log and you might find messages that looks similar to this:</p>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>* installing *source* package ‘xslt’ ...
-** using staged installation
-Package libexslt was not found in the pkg-config search path.
-Perhaps you should add the directory containing `libexslt.pc'
-to the PKG_CONFIG_PATH environment variable
-No package 'libexslt' found
-Using PKG_CFLAGS=-I/usr/include/libxml2
-Using PKG_LIBS=-lexslt -lxslt -lxml2
------------------------------[ ANTICONF ]-------------------------------
-Configuration failed to find libexslt library. Try installing:
- * deb: libxslt1-dev (Debian, Ubuntu, etc)
- * rpm: libxslt-devel (Fedora, CentOS, RHEL)
- * csw: libxslt_dev (Solaris)
-If libexslt is already installed, check that 'pkg-config' is in your
-PATH and PKG_CONFIG_PATH contains a libexslt.pc file. If pkg-config
-is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
-R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
----------------------------[ ERROR MESSAGE ]----------------------------
-&lt;stdin&gt;:1:10: fatal error: libxslt/xslt.h: No such file or directory
-compilation terminated.
-------------------------------------------------------------------------</code></pre>
-</div>
-<p>Use the instructions in these logs to install the correct package
-from your terminal and then open R or RStudio and retry installing the
-packages. For example, for the error above, use
-<code>sudo apt install libxslt1-dev</code>.</p>
-</div>
-</div>
-</div>
-</div>
+<p>Once your installation is complete with one of the mechanisms above,
+make sure to test your installation using the instructions below.</p>
 </section><section><h2 class="section-heading" id="install-test">Test your Workbench installation<a class="anchor" aria-label="anchor" href="#install-test"></a></h2>
 <hr class="half-width"><p>To test your installation <strong>open RStudio</strong> either as the
 locally installed app or in the browser if using Docker (or launch R if
 you have not installed RStudio and are not using Docker/devcontainers)
 and enter the following commands to confirm everything works:</p>
-<div class="codewrapper sourceCode" id="cb39">
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1415,10 +467,23 @@ and enter the following commands to confirm everything works:</p>
 <p>If the installation did not work, please <a href="https://github.com/carpentries/workbench/issues/new" class="external-link">raise an
 issue on GitHub</a>.</p>
 </section><section><h2 class="section-heading" id="connect-to-github">Connect to GitHub<a class="anchor" aria-label="anchor" href="#connect-to-github"></a></h2>
-<hr class="half-width"><p>You will need to make sure your git session is connected to GitHub.
-To do so, you will need to use an SSH or HTTPS protocol. If you already
-know how to push and pull from GitHub using the command line, you do not
-need to worry about setting this up.</p>
+<hr class="half-width"><p>To share your lessons with others, and to use our provided automated
+build and publishing workflows, you will need to use GitHub.</p>
+<div class="section level3">
+<h3 id="setting-up-git">Setting up Git<a class="anchor" aria-label="anchor" href="#setting-up-git"></a></h3>
+<p>You will need to make sure your git session is connected to GitHub.
+If you already push and pull from GitHub using the command line, you do
+not need to worry about setting this up as you will have done so
+already.</p>
+<p>If you haven’t used git or GitHub before, we recommend working
+through our Software Carpentry <a href="https://swcarpentry.github.io/git-novice/" class="external-link">Git lesson</a>
+first.</p>
+<p>To do so, you will need to use an SSH or HTTPS protocol. It’s
+recommended to use the SSH protocol, unless you explicitly cannot,
+e.g. behind an institutional firewall or proxy. If you do not have this
+set up, you should <a href="https://docs.github.com/en/github/getting-started-with-github/about-remote-repositories" class="external-link">choose
+a protocol</a> and then set them up according to the instructions from
+GitHub.</p>
 <div id="dockerdevcontainers-and-git" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -1439,11 +504,6 @@ Carpentries Slack workspace</a>.</p>
 </div>
 </div>
 </div>
-<p>If you do not have this set up, you should <a href="https://docs.github.com/en/github/getting-started-with-github/about-remote-repositories" class="external-link">choose
-a protocol</a> and then set them up according to the instructions from
-GitHub.</p>
-<p>It’s recommended to use the SSH protocol, unless you explicitly
-cannot, e.g. behind an institutional firewall or proxy.</p>
 <div id="is-githubs-documentation-confusing" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -1488,6 +548,7 @@ and RStudio.
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 </section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="../instructor/01-first-lesson.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
@@ -1539,8 +600,8 @@ any links that you are not going to use.
   "url": "https://carpentries.github.io/workbench-docs/instructor/index.html",
   "identifier": "https://carpentries.github.io/workbench-docs/instructor/index.html",
   "dateCreated": "2025-06-30",
-  "dateModified": "2026-04-28",
-  "datePublished": "2026-04-28"
+  "dateModified": "2026-05-01",
+  "datePublished": "2026-05-01"
 }
 
   </script><script>
