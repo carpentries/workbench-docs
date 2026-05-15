@@ -1,22 +1,22 @@
 ---
-title: "Building Lessons"
+title: "Creating Lessons"
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do we build lessons using a local Workbench installation?
-- How do we build lessons using the online GitHub architecture?
+- How do we create lessons using a local Workbench installation?
+- How do we create lessons using the online GitHub architecture?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Demonstrate how to use local R and shell Workbench commands 
-- Demonstrate how to build and deploy lessons on GitHub
+- Demonstrate how to use local R and shell Workbench commands for creating a lesson 
+- Demonstrate how to use the lesson template repositories to create a lesson repository on GitHub
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Local Lesson Builds
+## Local Lesson Creation
 
 Once `{sandpaper}` is installed, you can use various functions within the package to bootstrap new lessons from scratch based on a built-in template.
 
@@ -43,10 +43,10 @@ sandpaper::create_lesson("my-first-lesson")
 
 All going well, command output should be generated and a new lesson in the directory `~/lessons/my-first-lesson`:
 
-```r
+```
 > library(sandpaper)
 > sandpaper::create_lesson("my-first-lesson")
-No personal access token (PAT) available.ssons/my-first-lesson...
+No personal access token (PAT) available.
 Obtain a PAT from here:
 https://github.com/settings/tokens
 For more on what to do with the PAT, see ?gh_whoami.
@@ -62,9 +62,10 @@ set_episodes(path = path, order = ep, write = TRUE)
 ℹ Downloading workflows from https://api.github.com/repos/carpentries/workbench-workflows/releases/latest
 ℹ Workflows up-to-date!
 ℹ Consent to use package cache provided
-→ Searching for and installing available dependenciesst-lesson...
+→ Searching for and installing available dependencies ...
 → Hydrating
-Done!covering package dependencies ... 
+Done!
+Discovering package dependencies ... 
 The following packages were discovered:
 
 # ~/R/x86_64-pc-linux-gnu-library/4.5
@@ -145,7 +146,7 @@ OK that's a lot of output! Let's look at some specific things first, starting at
 
 #### Access Tokens
 
-```r
+```
 No personal access token (PAT) available.ssons/my-first-lesson...
 Obtain a PAT from here:
 https://github.com/settings/tokens
@@ -157,7 +158,7 @@ This is very important in later stages of lesson management and maintenance, cov
 
 #### Lesson Schedule
 
-```r
+```
 ℹ No schedule set, using Rmd files in episodes/ directory.
 → To remove this message, define your schedule in config.yaml or use `set_episodes()` to generate it.
 ──────────────────────────────────────────────────────────────────────────────────────
@@ -170,7 +171,7 @@ Lessons developers can provide summary timing schedules to help instructors plan
 
 #### Episodes
 
-```r
+```
 ✔ First episode created in /home/froggleston/lessons/my-first-lesson/episodes/introduction.Rmd
 ```
 
@@ -181,7 +182,7 @@ We'll geting into [adding episodes]() in a subsequent section.
 
 #### Workflows
 
-```r
+```
 ! No GitHub token available. API rate limits may apply.
 ℹ Downloading workflows from https://api.github.com/repos/carpentries/workbench-workflows/releases/latest
 ℹ Workflows up-to-date!
@@ -193,13 +194,14 @@ So, Workbench lessons come with built-in workflows that are run by the GitHub Ac
 
 We'll cover [GitHub Actions workflows]() later.
 
-#### 
+#### Lesson Dependencies
 
-```r
- Consent to use package cache provided
-→ Searching for and installing available dependenciesst-lesson...
+```
+ℹ Consent to use package cache provided
+→ Searching for and installing available dependencies ...
 → Hydrating
-Done!covering package dependencies ... 
+Done!
+Dicovering package dependencies ... 
 The following packages were discovered:
 
 # ~/R/x86_64-pc-linux-gnu-library/4.5
@@ -280,7 +282,7 @@ More information on RMarkdown, `renv`, and package management is found in the [U
 
 #### The Lesson Itself
 
-```r
+```
 ✔ Lesson successfully created in /home/froggleston/lessons/my-first-lesson
 ✔ Setting active project to "/home/froggleston/lessons/my-first-lesson".
 ✔ Changing working directory to /home/froggleston/lessons/my-first-lesson/
@@ -299,6 +301,6 @@ We'll next cover the required and optional configuration options and parameters 
 Alternatively, read on to learn how we can set up a new lesson completely within GitHub using our provided lesson template repositories.
 
 
-## GitHub Lesson Builds
+## Creating a Lesson on GitHub
 
 GitHub stuff
