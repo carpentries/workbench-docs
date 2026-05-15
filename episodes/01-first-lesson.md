@@ -147,13 +147,13 @@ OK that's a lot of output! Let's look at some specific things first, starting at
 #### Access Tokens
 
 ```
-No personal access token (PAT) available.ssons/my-first-lesson...
+No personal access token (PAT) available.
 Obtain a PAT from here:
 https://github.com/settings/tokens
 For more on what to do with the PAT, see ?gh_whoami.
 ```
 
-When interacting with GitHub later on, you can do so by using Personal Access Tokens that verify who you are to GitHub.
+When interacting with GitHub later on, you can do so by using Personal Access Tokens (PAT) that verify who you are to GitHub without needing to enter usernames and passwords.
 This is very important in later stages of lesson management and maintenance, covered in the [GitHub section](TODO.md) of this documentation, but we can ignore this for now. 
 
 #### Lesson Schedule
@@ -167,7 +167,10 @@ This is very important in later stages of lesson management and maintenance, cov
 set_episodes(path = path, order = ep, write = TRUE)
 ```
 
-Lessons developers can provide summary timing schedules to help instructors plan their teaching. By default, the lesson template does not include a schedule, so this is showing how you can use either the `set_episodes()` function to do so, or my manually editing the lesson configuration file, `config.yaml`. We'll get into both later.
+Lessons developers can provide summary timing schedules to help instructors plan their teaching.
+By default, the lesson template does not include a schedule, so this is showing how you can use either the `set_episodes()` function to do so, or my manually editing the lesson configuration file, `config.yaml`.
+
+We'll get into [utility commands for sandpaper](TODO.md) later.
 
 #### Episodes
 
@@ -178,7 +181,7 @@ Lessons developers can provide summary timing schedules to help instructors plan
 `sandpaper` has created an empty episode for us called `introduction.md` in the `episodes/` directory.
 This is a markdown file that represents the most basic element of a lesson - a text file with some Markdown content in it.
 
-We'll geting into [adding episodes]() in a subsequent section.
+We'll be getting into [adding episodes](02-creation-templates.md) in a subsequent section.
 
 #### Workflows
 
@@ -188,11 +191,20 @@ We'll geting into [adding episodes]() in a subsequent section.
 ℹ Workflows up-to-date!
 ```
 
-You can always manage your lesson locally, with no requirement to use GitHub. However, most of the lessons that are developed are kept in GitHub or other git-compliant repository management service, e.g. GitLab.
+You can always manage your lesson locally, with no requirement to use GitHub.
+However, most of the lessons that are developed are kept in GitHub or other git-compliant repository management services, e.g. GitLab.
 
-So, Workbench lessons come with built-in workflows that are run by the GitHub Actions platform. This part of the output shows `sandpaper` checking for any new updates to those workflows, but we're up to date so nothing to do.
+So, Workbench lessons come with built-in workflows that are run by the GitHub Actions platform.
+This part of the output shows `sandpaper` checking for any new updates to those workflows, but we're up to date so there's nothing to do.
 
-We'll cover [GitHub Actions workflows]() later.
+We'll cover [GitHub Actions workflows](TODO.md) later.
+
+::: callout
+
+These workflows, stored in the `.github/` directory of a lesson, are not used in any way locally and only on GitHub.
+
+:::
+
 
 #### Lesson Dependencies
 
@@ -274,9 +286,12 @@ The version of R recorded in the lockfile will be updated:
 * Lockfile written to '~/lessons/my-first-lesson/renv/profiles/lesson-requirements/renv.lock'.
 ```
 
-Whilst lessons can be written in basic Markdown, it's often the case that lesson developers want to include R code that runs when the lesson is built. They do this by using the [RMarkdown format](TODO.md) to analyse data, produce plots, and more, and the Workbench includes these outputs automatically in the lesson content without the developer having to manually manage inserting images and so on.
+Whilst lessons can be written in basic Markdown, it's often the case that lesson developers want to include R code that runs when the lesson is built.
+They do this by using the [RMarkdown format](TODO.md) to analyse data, produce plots, and more!
+The Workbench includes these outputs automatically in the lesson content without the developer having to manually manage inserting images and so on.
 
-As a result, R code within lessons might need extra packages, e.g. from BioConductor, to perform those tasks. This part of the output refers to the `{renv}` package and other lesson dependencies, but we can ignore this for now.
+As a result, R code within lessons might need extra packages, e.g. from BioConductor, ggplot, etc, to perform those tasks.
+This part of the output refers to the `{renv}` package and other lesson dependencies, but we can ignore this for now.
 
 More information on RMarkdown, `renv`, and package management is found in the [Using Code in Lessons](TODO.md) section. 
 
@@ -289,7 +304,8 @@ More information on RMarkdown, `renv`, and package management is found in the [U
 /home/froggleston/lessons/my-first-lesson
 ```
 
-These last few lines of output are telling us that everything went OK and where our lesson now lives. Your folder names will look different, but the output should be similar to what you have on your system.
+These last few lines of output are telling us that everything went OK and where our lesson now lives.
+Your folder names will look different, but the output should be similar to what you have on your system.
 
 To help us along, `sandpaper` has set the current working directory as this new lesson directory, so we can get straight to work.
 
@@ -303,4 +319,75 @@ Alternatively, read on to learn how we can set up a new lesson completely within
 
 ## Creating a Lesson on GitHub
 
-GitHub stuff
+The process for creating a lesson repository on GitHub uses no local tools or Workbench packages like `{sandpaper}`.
+Instead, we copy the template from an existing repository.
+
+We provide two lesson template types: basic markdown and RMarkdown. These are available in two Carpentries repositories, [workbench-template-md][md-template] and [workbench-template-rmd][rmd-template]. 
+We'll use the RMarkdown template in this example.
+
+::: callout
+
+It is important to note that if you choose the basic markdown template, you cannot (easily) then use RMarkdown code in that lesson.
+However, if selecting the Rmarkdown template, you can include both basic markdown and RMarkdown episodes.
+
+So if you are in doubt about which template to choose, use the RMarkdown version as it supports both routes.
+
+:::
+
+### Step 1: Choose a template
+
+Pick one of the following templates by clicking one of the links below:
+
+ - [Markdown Lessons (no generated content)](https://github.com/carpentries/workbench-template-md/generate) (if your lesson will not include R code examples, use this template)
+ - [R Markdown Lessons (generated content via R)](https://github.com/carpentries/workbench-template-rmd/generate) (our tutorial uses this template)
+
+A new browser page will open with a form to fill out to perform the copy of the template into your own account or organisation.
+
+### Step 2: Choose a name for your lesson repository. 
+
+Name it "buoyant-barnacle".
+
+**Ensure "Include All Branches" is selected**.
+
+Click on the button that says "Create repository from template"
+
+::::::::::::: callout
+
+#### Creating a new lesson repository
+
+![Screenshot of the form on GitHub to perform the template copy](fig/intro-template-screen.png){alt="Screenshot of a webform that says
+'Create a new repository from workbench-template-md'.
+It says that the new repository will contain the same files and folders as carpentries/workbench-template-md and has two required fields for Owner and Repository Name, which are filled in as ravmakz and buoyant-barnacle.
+There is a blank Description option, a radio button that selects public/private, and a checked checkbox to include all branches"}
+
+::::::::::::::::::::
+
+This step may take a short while to complete, but when it has finished processing, your browser will take you to your new lesson repository.
+
+### Step 3: Customise your site
+
+Within your lesson repository page on GitHub, click on the `config.yaml` file, then click on the pencil icon at the top right, and then edit the following `carpentry`, `title` and `source` values in the web editor that appears.
+
+ - `carpentry: "cp"`
+ - `title: "My First Lesson about Buoyant Barnacles"`
+
+For the `source` option, this should be the full URL to the lesson GitHub repository.
+For example, if your GitHub username was `captainhaddock` and your lesson repository was `buoyant-barnacle` the source field would be as follows:
+
+ - `source: "https://github.com/captainhaddock/buoyant-barnacle"`
+
+Commit the file using the Commit button at the bottom of the page.
+
+That's it!
+If you want to continue working directly on GitHub, you can do so.
+If you want to work locally, be sure to [follow the setup instructions][setup], clone your lesson to your computer, open RStudio (or your preferrred interface to R) inside
+the lesson folder, and [preview your new lesson](#preview).
+
+
+::::::::::::::::::::::::::::::::::::: keypoints 
+
+- A new Workbench lesson comprising a boilerplate episode and configuration can be created locally with `sandpaper::create_lesson`
+- A new lesson repository can be created on GitHub by copying one of the provided Markdown or RMarkdown lesson templates
+- There's no right or wrong way to create a lesson - it's completely down to preference
+
+::::::::::::::::::::::::::::::::::::::::::::::::
