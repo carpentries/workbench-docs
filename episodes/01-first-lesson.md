@@ -388,6 +388,6 @@ the lesson folder, and [preview your new lesson](#preview).
 
 - A new Workbench lesson comprising a boilerplate episode and configuration can be created locally with `sandpaper::create_lesson`
 - A new lesson repository can be created on GitHub by copying one of the provided Markdown or RMarkdown lesson templates
-- There's no right or wrong way to create a lesson - it's completely down to preference
+- There's no right or wrong way to create a lesson - it's completely down to preference - but if you want to add R code later on in lesson development, start with the RMarkdown template.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
