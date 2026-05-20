@@ -1,5 +1,5 @@
 ---
-title: "Creating Lessons"
+title: "Quickstart: Creating Lessons"
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -38,14 +38,14 @@ R
 
 ```r
 library(sandpaper)
-sandpaper::create_lesson("my-first-lesson")
+sandpaper::create_lesson("buoyant-barnacle")
 ```
 
-All going well, command output should be generated and a new lesson in the directory `~/lessons/my-first-lesson`:
+All going well, command output should be generated and a new lesson in the directory `~/lessons/buoyant-barnacle`:
 
 ```
 > library(sandpaper)
-> sandpaper::create_lesson("my-first-lesson")
+> sandpaper::create_lesson("buoyant-barnacle")
 No personal access token (PAT) available.
 Obtain a PAT from here:
 https://github.com/settings/tokens
@@ -56,8 +56,8 @@ For more on what to do with the PAT, see ?gh_whoami.
 ℹ To save this configuration, use
 
 set_episodes(path = path, order = ep, write = TRUE)
-☐ Edit /home/froggleston/lessons/my-first-lesson/episodes/introduction.Rmd.
-✔ First episode created in /home/froggleston/lessons/my-first-lesson/episodes/introduction.Rmd
+☐ Edit /home/froggleston/lessons/buoyant-barnacle/episodes/introduction.Rmd.
+✔ First episode created in /home/froggleston/lessons/buoyant-barnacle/episodes/introduction.Rmd
 ! No GitHub token available. API rate limits may apply.
 ℹ Downloading workflows from https://api.github.com/repos/carpentries/workbench-workflows/releases/latest
 ℹ Workflows up-to-date!
@@ -135,11 +135,11 @@ The following package(s) will be updated in the lockfile:
 The version of R recorded in the lockfile will be updated:
 - R             [* -> 4.5.0]
 
-* Lockfile written to '~/lessons/my-first-lesson/renv/profiles/lesson-requirements/renv.lock'.
-✔ Lesson successfully created in /home/froggleston/lessons/my-first-lesson
-✔ Setting active project to "/home/froggleston/lessons/my-first-lesson".
-✔ Changing working directory to /home/froggleston/lessons/my-first-lesson/
-/home/froggleston/lessons/my-first-lesson
+* Lockfile written to '~/lessons/buoyant-barnacle/renv/profiles/lesson-requirements/renv.lock'.
+✔ Lesson successfully created in /home/froggleston/lessons/buoyant-barnacle
+✔ Setting active project to "/home/froggleston/lessons/buoyant-barnacle".
+✔ Changing working directory to /home/froggleston/lessons/buoyant-barnacle/
+/home/froggleston/lessons/buoyant-barnacle
 ```
 
 OK that's a lot of output! Let's look at some specific things first, starting at the top and working our way down:
@@ -175,7 +175,7 @@ We'll get into [utility commands for sandpaper](TODO.md) later.
 #### Episodes
 
 ```
-✔ First episode created in /home/froggleston/lessons/my-first-lesson/episodes/introduction.Rmd
+✔ First episode created in /home/froggleston/lessons/buoyant-barnacle/episodes/introduction.Rmd
 ```
 
 `sandpaper` has created an empty episode for us called `introduction.md` in the `episodes/` directory.
@@ -283,7 +283,7 @@ The following package(s) will be updated in the lockfile:
 The version of R recorded in the lockfile will be updated:
 - R             [* -> 4.5.0]
 
-* Lockfile written to '~/lessons/my-first-lesson/renv/profiles/lesson-requirements/renv.lock'.
+* Lockfile written to '~/lessons/buoyant-barnacle/renv/profiles/lesson-requirements/renv.lock'.
 ```
 
 Whilst lessons can be written in basic Markdown, it's often the case that lesson developers want to include R code that runs when the lesson is built.
@@ -298,10 +298,10 @@ More information on RMarkdown, `renv`, and package management is found in the [U
 #### The Lesson Itself
 
 ```
-✔ Lesson successfully created in /home/froggleston/lessons/my-first-lesson
-✔ Setting active project to "/home/froggleston/lessons/my-first-lesson".
-✔ Changing working directory to /home/froggleston/lessons/my-first-lesson/
-/home/froggleston/lessons/my-first-lesson
+✔ Lesson successfully created in /home/froggleston/lessons/buoyant-barnacle
+✔ Setting active project to "/home/froggleston/lessons/buoyant-barnacle".
+✔ Changing working directory to /home/froggleston/lessons/buoyant-barnacle/
+/home/froggleston/lessons/buoyant-barnacle
 ```
 
 These last few lines of output are telling us that everything went OK and where our lesson now lives.
@@ -357,37 +357,58 @@ Click on the button that says "Create repository from template"
 
 ![Screenshot of the form on GitHub to perform the template copy](fig/intro-template-screen.png){alt="Screenshot of a webform that says
 'Create a new repository from workbench-template-md'.
-It says that the new repository will contain the same files and folders as carpentries/workbench-template-md and has two required fields for Owner and Repository Name, which are filled in as ravmakz and buoyant-barnacle.
+It says that the new repository will contain the same files and folders as carpentries/workbench-template-md and has two required fields for Owner and Repository Name, which are filled in as `ravmakz` and `buoyant-barnacle`.
 There is a blank Description option, a radio button that selects public/private, and a checked checkbox to include all branches"}
 
 ::::::::::::::::::::
 
 This step may take a short while to complete, but when it has finished processing, your browser will take you to your new lesson repository.
 
-### Step 3: Customise your site
+### Step 3: Clone your lesson locally
 
-Within your lesson repository page on GitHub, click on the `config.yaml` file, then click on the pencil icon at the top right, and then edit the following `carpentry`, `title` and `source` values in the web editor that appears.
+::::::::::::: callout
 
- - `carpentry: "cp"`
- - `title: "My First Lesson about Buoyant Barnacles"`
+There are other ways to build lessons, covered later on, but for now let's use a local install of the Workbench to continue. 
 
-For the `source` option, this should be the full URL to the lesson GitHub repository.
-For example, if your GitHub username was `captainhaddock` and your lesson repository was `buoyant-barnacle` the source field would be as follows:
+Make sure you have a working Workbench install, as per the [installation instructions](../learners/local_install.md).
 
- - `source: "https://github.com/captainhaddock/buoyant-barnacle"`
+:::::::::::::::::::::
 
-Commit the file using the Commit button at the bottom of the page.
+Now that you have a lesson repository in your GitHub account or organisation, clone it locally so we can move on to the build process.
 
-That's it!
-If you want to continue working directly on GitHub, you can do so.
-If you want to work locally, be sure to [follow the setup instructions][setup], clone your lesson to your computer, open RStudio (or your preferrred interface to R) inside
-the lesson folder, and [preview your new lesson](#preview).
+Let's start in a new folder in our home directory called `lessons`, and use `git clone` to download the lesson. To get your lesson URL for cloning, go to your lesson repository's main page and click the `<> Code` button. Make sure you're in the Local tab of the popup that appears, and select either the HTTPS or SSH tab underneath. Click the `Copy URL to Clipboard` button (an icon with two overlapping squares) to the right of the URL box. 
 
+::::::::::::: callout
+
+SSH is the preferred method, so please set up SSH access keys as per [the GitHub documentation](TODO.md) when you're ready to do so if you haven't already!
+
+:::::::::::::::::::::
+
+For SSH the URL will be something like `git@github.com:[your-github-username]/buoyant-barnacle.git`.
+
+For HTTPS the URL will be something like `https://github.com/[your-github-username]/buoyant-barnacle.git`.
+
+Head to a terminal to continue, and when calling the `git clone` command, paste in the URL you copied.
+
+```bash
+
+# Make sure `[your-github-username]` is your own GitHub account or organisation!
+
+cd ~
+mkdir lessons
+cd lessons
+git clone git@github.com:[your-github-username]/buoyant-barnacle.git
+cd buoyant-barnacle
+
+```
+
+We're ready to start building the lesson!
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
 - A new Workbench lesson comprising a boilerplate episode and configuration can be created locally with `sandpaper::create_lesson`
 - A new lesson repository can be created on GitHub by copying one of the provided Markdown or RMarkdown lesson templates
+- A lesson created on GitHub can be cloned locally, as if you had created it locally
 - There's no right or wrong way to create a lesson - it's completely down to preference - but if you want to add R code later on in lesson development, start with the RMarkdown template.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
