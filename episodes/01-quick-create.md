@@ -41,8 +41,6 @@ library(sandpaper)
 sandpaper::create_lesson("buoyant-barnacle")
 ```
 
-All going well, command output should be generated and a new lesson in the directory `~/lessons/buoyant-barnacle`:
-
 ::::::::::::: callout
 
 In these examples, we're assuming our Linux user is `captainhaddock`, so our home directory is `/home/captainhaddock`.
@@ -50,6 +48,10 @@ In these examples, we're assuming our Linux user is `captainhaddock`, so our hom
 This will be different on your system!
 
 :::::::::::::::::::::
+
+All going well, command output should be generated and a new lesson in the directory `~/lessons/buoyant-barnacle`. Expand the spoiler to show the complete example output, but we'll go through it below.
+
+::::::::::::: spoiler
 
 ```
 > library(sandpaper)
@@ -149,6 +151,8 @@ The version of R recorded in the lockfile will be updated:
 ✔ Changing working directory to /home/captainhaddock/lessons/buoyant-barnacle/
 /home/captainhaddock/lessons/buoyant-barnacle
 ```
+
+:::::::::::::::::::::
 
 OK that's a lot of output! Let's look at some specific things first, starting at the top and working our way down:
 
