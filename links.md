@@ -18,3 +18,5 @@ any links that you are not going to use.
 [fenced-divs]: https://pandoc.org/MANUAL#divs-and-spans
 [basic-syntax]: https://www.markdownguide.org/basic-syntax
 [extended-syntax]: https://www.markdownguide.org/extended-syntax/
+[md-template]: https://github.com/carpentries/workbench-template-md/
+[rmd-template]: https://github.com/carpentries/workbench-template-rmd/
