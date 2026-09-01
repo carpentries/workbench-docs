@@ -44,7 +44,7 @@ contact: 'team@carpentries.org'
 
 # Order of episodes in your lesson
 episodes:
-- 01-first-lesson.md
+- 01-quick-create.md
 
 # Information for Learners
 learners:
