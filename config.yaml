@@ -1,0 +1,69 @@
+#------------------------------------------------------------
+# The Carpentries Workbench Documentation
+#------------------------------------------------------------
+
+carpentry: 'cp'
+
+# Alt-text description of the lesson.
+carpentry_description: 'The Carpentries Workbench Documentation'
+
+# Overall title for pages.
+title: 'Workbench Docs' # FIXME
+
+# Date the lesson was created (YYYY-MM-DD, this is empty by default)
+created: 2025-06-30
+
+# Comma-separated list of keywords for the lesson
+keywords: 'workbench, sandpaper, pegboard, varnish, The Carpentries, lessons, docker, devcontainers'
+
+# Life cycle stage of the lesson
+# possible values: pre-alpha, alpha, beta, stable
+life_cycle: 'pre-alpha'
+
+# License of the lesson
+license: 'CC-BY 4.0'
+
+# Link to the source repository for this lesson
+source: 'https://github.com/carpentries/workbench-docs'
+
+# Default branch of your lesson
+branch: 'main'
+
+# Who to contact if there are any issues
+contact: 'team@carpentries.org'
+
+# Navigation ------------------------------------------------
+#
+# Use the following menu items to specify the order of
+# individual pages in each dropdown section. Leave blank to
+# include all pages in the folder.
+#
+# profiles:
+# - one-learner.md
+# - another-learner.md
+
+# Order of episodes in your lesson
+episodes:
+- 01-first-lesson.md
+
+# Information for Learners
+learners:
+- setup.md
+- local_install.md
+- devcontainer.md
+- docker.md
+- github.md
+- internals.md
+- faq.md
+
+# Information for Instructors
+instructors:
+- instructor-notes.md
+
+# Learner Profiles
+profiles:
+
+# Customisation ---------------------------------------------
+#
+# This space below is where custom yaml items (e.g. pinning
+# sandpaper and varnish versions) should live
